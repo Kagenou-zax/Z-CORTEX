@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { ArrowRight, Sparkle } from 'lucide-react';
+import heroImg from '../assets/images/hero_profile_bw_1779093593063.png';
 
 interface HeroProps {
   onStartProjectClick?: () => void;
@@ -74,7 +75,7 @@ export default function Hero({ onStartProjectClick }: HeroProps) {
             >
               <div className="relative">
                 <img 
-                  src="/src/assets/images/hero_profile_bw_1779093593063.png" 
+                  src={heroImg} 
                   alt="Profile" 
                   className="w-full h-auto object-cover opacity-80"
                   referrerPolicy="no-referrer"

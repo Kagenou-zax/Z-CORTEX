@@ -6,6 +6,7 @@
 import { motion } from 'motion/react';
 import { ArrowLeft, Github, Globe, Mail, Lock, Eye, EyeOff } from 'lucide-react';
 import React, { useState } from 'react';
+import loginSidebarImg from '../assets/images/login_sidebar_landscape_1779113380340.png';
 import { auth, db, googleProvider, githubProvider } from '../lib/firebase';
 import { signInWithPopup, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
@@ -116,7 +117,7 @@ export default function LoginPage({ onBack }: LoginPageProps) {
       <div className="hidden md:flex md:w-1/2 lg:w-[45%] relative overflow-hidden p-12 flex-col justify-between border-r border-white/5">
         <div className="absolute inset-0 z-0">
           <img 
-            src="/src/assets/images/login_sidebar_landscape_1779113380340.png" 
+            src={loginSidebarImg} 
             alt="Login Sidebar" 
             className="w-full h-full object-cover grayscale opacity-50 contrast-125"
             referrerPolicy="no-referrer"

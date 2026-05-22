@@ -6,6 +6,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Cpu, Gauge, Globe, Layers, Settings, Zap } from 'lucide-react';
+import techAbstractImg from '../assets/images/technical_abstract_dark_1779108165415.png';
 
 const steps = [
   { id: 'craftsmanship', label: 'Craftsmanship', title: 'The Art of Code', desc: 'Meticulous attention to detail in every line of code, ensuring performance and elegance coexist.' },
@@ -91,7 +92,7 @@ export default function Process() {
                 >
                    <div className="relative w-full max-w-2xl aspect-[16/9] lg:aspect-square flex items-center justify-center">
                       <img 
-                        src="/src/assets/images/technical_abstract_dark_1779108165415.png" 
+                        src={techAbstractImg} 
                         alt="Process Visualization" 
                         className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 transition-all duration-1000"
                         referrerPolicy="no-referrer"
