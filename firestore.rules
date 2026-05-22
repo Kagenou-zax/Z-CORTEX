@@ -1,0 +1,59 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // 1. Global Safety Net
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // 2. Primitives
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+    function incoming() {
+      return request.resource.data;
+    }
+    function existing() {
+      return resource.data;
+    }
+    function isSignedIn() {
+      return request.auth != null;
+    }
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+    function isEmailVerified() {
+      return request.auth.token.email_verified == true;
+    }
+
+    // 3. User Validation Blueprint
+    function isValidUser(data) {
+      return data.keys().hasAll(['uid', 'email', 'createdAt', 'lastLogin']) &&
+             data.keys().size() <= 6 &&
+             data.uid is string && data.uid.size() <= 128 &&
+             data.email is string && data.email.size() <= 256 &&
+             data.uid == request.auth.uid;
+    }
+
+    // 4. Users Collection
+    match /users/{userId} {
+      allow get: if isOwner(userId);
+      allow create: if isOwner(userId) && 
+                      isEmailVerified() &&
+                      isValidId(userId) && 
+                      isValidUser(incoming()) &&
+                      incoming().createdAt == request.time &&
+                      incoming().lastLogin == request.time;
+      
+      allow update: if isOwner(userId) && 
+                      isEmailVerified() &&
+                      isValidUser(incoming()) &&
+                      incoming().createdAt == existing().createdAt &&
+                      incoming().lastLogin == request.time &&
+                      (
+                        incoming().diff(existing()).affectedKeys().hasOnly(['displayName', 'photoURL', 'lastLogin'])
+                      );
+    }
+  }
+}
