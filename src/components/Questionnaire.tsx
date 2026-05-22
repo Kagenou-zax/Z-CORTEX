@@ -80,7 +80,7 @@ export default function Questionnaire({ onBack }: QuestionnaireProps) {
   });
 
   // Formspree action endpoint
-  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_QUESTIONNAIRE_ID_HERE';
+  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xjgzrkdv';
 
   const validateField = (name: string, value: string) => {
     let error = '';
