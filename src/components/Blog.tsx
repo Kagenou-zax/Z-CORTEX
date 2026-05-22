@@ -12,18 +12,21 @@ const articles = [
     category: 'Engineering',
     title: 'Architecting Scalable Micro-frontends with React',
     excerpt: 'Detailed insights into creating modular, maintainable frontend structures for enterprise-grade applications.',
+    href: 'blog/architecting-scalable-microfrontends.html',
   },
   {
     date: 'February 28, 2024',
     category: 'Intelligence',
     title: 'Integrating Generative AI into Modern Workflows',
     excerpt: 'How we leverage LLMs to accelerate development cycles without compromising on architectural integrity.',
+    href: 'blog/integrating-generative-ai.html',
   },
   {
     date: 'January 12, 2024',
     category: 'Design',
     title: 'The Psychology of Dark Mode in Luxury Interfaces',
     excerpt: 'Exploring the visual principles that drive user engagement in premium, low-light digital environments.',
+    href: 'blog/psychology-dark-mode.html',
   },
 ];
 
@@ -52,14 +55,16 @@ export default function Blog() {
         {/* Blog Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5 border border-white/5">
           {articles.map((article, idx) => (
-            <motion.div
+            <motion.a
               key={idx}
+              href={article.href}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               whileHover={{ scale: 1.02, backgroundColor: "rgba(255, 255, 255, 0.03)" }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="bg-black p-10 group cursor-pointer border border-transparent hover:border-white/10 transition-all duration-500 flex flex-col justify-between min-h-[400px] z-10"
+              className="bg-black p-10 group cursor-pointer border border-transparent hover:border-white/10 transition-all duration-500 flex flex-col justify-between min-h-[400px] z-10 no-underline text-white block"
+              id={`blog-card-${idx}`}
             >
               <div className="space-y-6">
                 <div className="space-y-4">
@@ -68,7 +73,7 @@ export default function Blog() {
                     <span className="text-white/30">{article.date}</span>
                   </div>
                   
-                  <h3 className="relative font-display text-2xl uppercase font-medium leading-tight tracking-tight group-hover:text-brand transition-colors duration-300 w-fit">
+                  <h3 className="relative font-display text-2xl uppercase font-medium leading-tight tracking-tight group-hover:text-brand transition-colors duration-300 w-fit text-white">
                     {article.title}
                     <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-brand transition-all duration-500 group-hover:w-full" />
                   </h3>
@@ -84,7 +89,7 @@ export default function Blog() {
                   <ArrowRight className="w-4 h-4 text-white group-hover:text-black transition-colors" />
                 </div>
               </div>
-            </motion.div>
+            </motion.a>
           ))}
         </div>
       </div>
