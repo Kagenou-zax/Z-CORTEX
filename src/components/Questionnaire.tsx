@@ -298,26 +298,67 @@ export default function Questionnaire({ onBack }: QuestionnaireProps) {
         <AnimatePresence mode="wait">
           {submission.succeeded && (
             <motion.div 
-              initial={{ opacity: 0, scale: 0.98 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.98 }}
-              className="mb-12 bg-brand/5 border border-brand/35 p-8 rounded-sm text-center space-y-6 shadow-[0_20px_50px_rgba(234,88,12,0.05)]"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ 
+                opacity: 1, 
+                y: 0,
+                transition: {
+                  duration: 0.8,
+                  ease: [0.16, 1, 0.3, 1],
+                  staggerChildren: 0.12,
+                  delayChildren: 0.05
+                }
+              }}
+              exit={{ opacity: 0, y: -20, transition: { duration: 0.3 } }}
+              className="mb-12 bg-brand/5 border border-brand/30 p-8 md:p-12 rounded-sm text-center space-y-6 shadow-[0_20px_50px_rgba(234,88,12,0.05)] relative overflow-hidden"
               id="questionnaire-success-message"
             >
-              <div className="w-16 h-16 bg-brand text-black rounded-full flex items-center justify-center mx-auto text-xl font-bold shadow-lg shadow-brand/20">
-                ✔
-              </div>
-              <h2 className="font-display text-2xl uppercase tracking-wider font-semibold">Specification Submitted!</h2>
-              <p className="font-sans text-xs text-white/60 max-w-md mx-auto leading-relaxed">
-                Thank you for your response! Your application profile block has been successfully uploaded. A design notification was dispatched to <strong className="text-white">faadilnurudeen6@gmail.com</strong>. I'll reach out to schedule our session shortly.
-              </p>
-              <button 
-                type="button"
-                onClick={onBack}
-                className="bg-white text-black text-[10px] uppercase font-bold tracking-[0.2em] px-8 py-3.5 rounded-sm hover:bg-brand hover:text-white transition-all duration-300"
+              {/* Subtle industrial/premium accents */}
+              <div className="absolute top-0 right-0 w-32 h-32 bg-brand/5 rounded-full blur-2xl pointer-events-none" />
+              <div className="absolute -inset-px border border-white/5 pointer-events-none rounded-sm" />
+
+              <motion.div 
+                initial={{ scale: 0, rotate: -15 }}
+                animate={{ 
+                  scale: 1, 
+                  rotate: 0,
+                  transition: { type: "spring", stiffness: 200, damping: 15 }
+                }}
+                className="w-16 h-16 bg-brand text-black rounded-full flex items-center justify-center mx-auto text-xl font-bold shadow-lg shadow-brand/25"
+                id="success-icon-badge"
               >
-                Back to Homepage
-              </button>
+                ✔
+              </motion.div>
+
+              <motion.h2 
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }}
+                className="font-display text-2xl md:text-3xl uppercase tracking-wider font-semibold text-white"
+              >
+                Specification Submitted!
+              </motion.h2>
+
+              <motion.p 
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }}
+                className="font-sans text-xs md:text-sm text-white/60 max-w-sm md:max-w-md mx-auto leading-relaxed"
+              >
+                Thank you for your response! Your application profile block has been successfully uploaded. A design notification was dispatched to <strong className="text-white">faadilnurudeen6@gmail.com</strong>. I'll reach out to schedule our session shortly.
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }}
+                className="pt-2"
+              >
+                <button 
+                  type="button"
+                  onClick={onBack}
+                  className="bg-white text-black text-[10px] uppercase font-bold tracking-[0.2em] px-8 py-3.5 rounded-sm hover:bg-brand hover:text-white hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
+                >
+                  Back to Homepage
+                </button>
+              </motion.div>
             </motion.div>
           )}
         </AnimatePresence>
@@ -331,6 +372,32 @@ export default function Questionnaire({ onBack }: QuestionnaireProps) {
             action={FORMSPREE_ENDPOINT}
             method="POST"
           >
+            {/* Indeterminate loader bar */}
+            <AnimatePresence>
+              {submission.submitting && (
+                <motion.div 
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 3 }}
+                  exit={{ opacity: 0, height: 0 }}
+                  className="relative w-full bg-white/5 overflow-hidden rounded-full mb-8"
+                  id="questionnaire-loader-bar"
+                >
+                  <motion.div 
+                    className="absolute top-0 bottom-0 left-0 bg-brand shadow-[0_0_10px_rgba(234,88,12,0.8)] rounded-full"
+                    style={{ width: '40%' }}
+                    animate={{
+                      left: ['-40%', '100%'],
+                    }}
+                    transition={{
+                      repeat: Infinity,
+                      duration: 1.4,
+                      ease: "easeInOut"
+                    }}
+                  />
+                </motion.div>
+              )}
+            </AnimatePresence>
+
             {/* SECTION 1: Client Basics */}
             <div className="glass-card p-6 md:p-8 rounded-sm space-y-6 relative border-white/5" id="field-block-basics">
               <div className="absolute top-0 left-8 -translate-y-1/2 bg-black px-4 py-1 text-brand font-mono text-[9px] uppercase tracking-widest border border-white/5">
