@@ -79,35 +79,35 @@ export default function Projects() {
   };
 
   return (
-    <section className="relative bg-black py-32 overflow-hidden border-t border-white/5" id="projects">
+    <section className="relative bg-[#0A0E17] py-32 overflow-hidden border-t border-[#38BDF8]/10" id="projects">
       {/* Side Label (Sticky-like feel) */}
       <div className="absolute left-[2%] top-[15%] hidden xl:flex flex-col items-center gap-6 z-10" id="projects-rail">
-         <span className="vertical-rl uppercase tracking-[0.5em] text-[10px] text-brand/60 font-medium">Selected Archives</span>
-         <div className="w-[1px] h-24 bg-gradient-to-b from-brand/20 to-transparent" />
+         <span className="vertical-rl uppercase tracking-[0.5em] text-[10px] text-brand/80 font-medium">Selected Archives</span>
+         <div className="w-[1px] h-24 bg-gradient-to-b from-brand/40 to-transparent" />
       </div>
 
       <div className="max-w-7xl mx-auto px-8">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-12 mb-16" id="projects-header">
           <div className="space-y-4">
-            <h2 className="font-display text-5xl md:text-7xl uppercase tracking-tighter leading-none font-medium">
+            <h2 className="font-display text-5xl md:text-7xl uppercase tracking-tighter leading-none font-medium text-white">
               Featured <br />
-              <span className="text-white/20">Works</span>
+              <span className="text-[#38BDF8]/30">Works</span>
             </h2>
           </div>
-          <div className="flex items-center gap-8 border-l border-white/10 pl-8 h-fit">
+          <div className="flex items-center gap-8 border-l border-[#38BDF8]/20 pl-8 h-fit">
             <div className="flex flex-col">
-              <span className="text-brand font-mono text-xl">{projects.length}</span>
-              <span className="text-white/40 text-[10px] uppercase tracking-widest">Total Case Studies</span>
+              <span className="text-brand font-mono text-xl font-bold">{projects.length}</span>
+              <span className="text-[#94A3B8] text-[10px] uppercase tracking-widest">Total Case Studies</span>
             </div>
-            <p className="text-white/40 text-xs max-w-[200px] leading-relaxed">
+            <p className="text-[#94A3B8] text-xs max-w-[200px] leading-relaxed">
               Carefully curated projects focusing on high-end performance and design precision.
             </p>
           </div>
         </div>
 
         {/* Category Filters */}
-        <div className="flex flex-wrap gap-2 pb-8 mb-12 border-b border-white/5" id="projects-filter-bar">
+        <div className="flex flex-wrap gap-2 pb-8 mb-12 border-b border-[#38BDF8]/10" id="projects-filter-bar">
           {['ALL', 'SaaS Platform', 'Design System', 'Cybersecurity', 'Creative Tech'].map((category) => {
             const isActive = selectedCategory === category;
             return (
@@ -120,8 +120,8 @@ export default function Projects() {
                 }}
                 className={`px-4 py-2 font-mono text-[9px] md:text-[10px] uppercase tracking-widest border transition-all duration-300 relative rounded-sm ${
                   isActive 
-                    ? 'bg-brand/10 border-brand text-brand hover:bg-brand/15' 
-                    : 'bg-white/5 border-white/10 text-white/50 hover:bg-white/[0.08] hover:text-white hover:border-white/20'
+                    ? 'bg-brand/15 border-brand text-brand font-bold shadow-[0_0_15px_rgba(0,230,165,0.2)]' 
+                    : 'bg-[#131B2E] border-[#38BDF8]/15 text-[#94A3B8] hover:bg-[#1A243D] hover:text-white hover:border-[#38BDF8]/40'
                 }`}
               >
                 {isActive && (
@@ -148,12 +148,12 @@ export default function Projects() {
                 key={project.id}
                 onMouseEnter={() => setActiveIndex(index)}
                 onClick={() => handleProjectClick(index)}
-                className={`relative px-8 py-10 cursor-pointer transition-all duration-500 border border-transparent border-b-white/5 group rounded-sm hover:-translate-y-0.5 hover:scale-[1.01] ${
+                className={`relative px-8 py-10 cursor-pointer transition-all duration-500 border border-transparent border-b-[#38BDF8]/10 group rounded-sm hover:-translate-y-0.5 hover:scale-[1.01] ${
                   expandedIndex === index 
-                    ? 'bg-white/[0.06] border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.6)]' 
+                    ? 'bg-[#131B2E] border-[#38BDF8]/30 shadow-[0_20px_50px_rgba(0,0,0,0.6)]' 
                     : activeIndex === index 
-                      ? 'bg-white/[0.03] border-white/10 shadow-[0_15px_40px_rgba(0,0,0,0.4)]' 
-                      : 'hover:bg-white/[0.02] hover:border-white/10 hover:shadow-[0_15px_35px_rgba(0,0,0,0.5)]'
+                      ? 'bg-[#131B2E]/90 border-[#38BDF8]/20 shadow-[0_15px_40px_rgba(0,0,0,0.4)]' 
+                      : 'hover:bg-[#131B2E]/60 hover:border-[#38BDF8]/20 hover:shadow-[0_15px_35px_rgba(0,0,0,0.3)]'
                 }`}
                 id={`project-item-${project.id}`}
               >
@@ -164,22 +164,22 @@ export default function Projects() {
                     height: (activeIndex === index || expandedIndex === index) ? '100%' : '0%',
                     opacity: (activeIndex === index || expandedIndex === index) ? 1 : 0
                   }}
-                  className="absolute left-0 top-0 w-[2px] bg-brand"
+                  className="absolute left-0 top-0 w-[2px] bg-brand shadow-[0_0_10px_rgba(0,230,165,0.8)]"
                 />
 
                 <div className="flex items-start justify-between gap-4">
                   <div className="space-y-1">
-                    <span className="font-mono text-[10px] text-brand uppercase tracking-widest block">
+                    <span className="font-mono text-[10px] text-brand uppercase tracking-widest block font-medium">
                       {project.id} / {project.category}
                     </span>
                     <h3 className={`font-display text-2xl uppercase tracking-widest transition-colors duration-300 ${
-                      (activeIndex === index || expandedIndex === index) ? 'text-white' : 'text-white/40'
+                      (activeIndex === index || expandedIndex === index) ? 'text-white' : 'text-[#94A3B8]'
                     }`}>
                       {project.title}
                     </h3>
                   </div>
                   <div className={`transition-all duration-500 transform ${
-                    (activeIndex === index || expandedIndex === index) ? 'rotate-95 text-brand' : 'rotate-45 text-white/40 group-hover:text-white'
+                    (activeIndex === index || expandedIndex === index) ? 'rotate-95 text-brand' : 'rotate-45 text-[#94A3B8] group-hover:text-white'
                   }`}>
                     <ArrowUpRight className="w-5 h-5" />
                   </div>
@@ -197,17 +197,17 @@ export default function Projects() {
                     >
                       {expandedIndex !== index ? (
                         <>
-                          <p className="pt-6 text-white/50 text-xs leading-relaxed max-w-[40ch]">
+                          <p className="pt-6 text-[#94A3B8] text-xs leading-relaxed max-w-[40ch]">
                             {project.description}
                           </p>
                           <div className="flex flex-wrap gap-x-4 gap-y-2 pt-6">
                             {project.tags.map(tag => (
-                              <span key={tag} className="text-[10px] font-mono text-white/20 uppercase tracking-widest">
+                              <span key={tag} className="text-[10px] font-mono text-[#38BDF8]/60 uppercase tracking-widest">
                                 #{tag}
                               </span>
                             ))}
                           </div>
-                          <p className="pt-4 text-brand font-mono text-[9px] uppercase tracking-[0.2em] flex items-center gap-1.5 opacity-60 group-hover:opacity-100 transition-opacity">
+                          <p className="pt-4 text-brand font-mono text-[9px] uppercase tracking-[0.2em] flex items-center gap-1.5 opacity-80 group-hover:opacity-100 transition-opacity">
                             <span>Click to expand specs</span>
                             <span className="inline-block transition-transform group-hover:translate-x-1">→</span>
                           </p>
@@ -215,19 +215,19 @@ export default function Projects() {
                       ) : (
                         <div className="pt-6 space-y-6" onClick={(e) => e.stopPropagation()}>
                           <div>
-                            <span className="font-mono text-[9px] uppercase tracking-widest text-brand block mb-2">Detailed Spec-Sheet</span>
-                            <p className="text-white/85 text-xs leading-relaxed max-w-[45ch]">
+                            <span className="font-mono text-[9px] uppercase tracking-widest text-brand block mb-2 font-bold">Detailed Spec-Sheet</span>
+                            <p className="text-[#94A3B8] text-xs leading-relaxed max-w-[45ch]">
                               {project.fullDescription}
                             </p>
                           </div>
 
                           <div>
-                            <span className="font-mono text-[9px] uppercase tracking-widest text-brand block mb-3">System Technologies</span>
+                            <span className="font-mono text-[9px] uppercase tracking-widest text-brand block mb-3 font-bold">System Technologies</span>
                             <div className="flex flex-wrap gap-2 max-w-[40ch]">
                               {project.extendedTags.map(tag => (
                                 <span 
                                   key={tag} 
-                                  className="text-[9px] font-mono bg-white/5 border border-white/10 px-2 py-1 rounded-sm text-white/60 hover:border-brand/40 hover:text-white transition-colors"
+                                  className="text-[9px] font-mono bg-[#0A0E17] border border-[#38BDF8]/20 px-2 py-1 rounded-sm text-[#94A3B8] hover:border-brand hover:text-white transition-colors"
                                 >
                                   {tag}
                                 </span>
@@ -240,7 +240,7 @@ export default function Projects() {
                               href={project.demoUrl}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="flex items-center gap-2 bg-brand text-black px-4 py-2.5 rounded-sm font-mono text-[10px] uppercase tracking-widest hover:bg-brand-light hover:shadow-lg hover:shadow-brand/20 transition-all"
+                              className="flex items-center gap-2 bg-brand text-[#0A0E17] px-4 py-2.5 rounded-sm font-mono text-[10px] uppercase tracking-widest font-bold hover:bg-brand-light hover:shadow-lg hover:shadow-brand/20 transition-all"
                             >
                               <ExternalLink className="w-3.5 h-3.5" />
                               Live Demo
@@ -249,9 +249,9 @@ export default function Projects() {
                               href={project.repoUrl}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="flex items-center gap-2 bg-white/5 border border-white/10 text-white/80 hover:text-white px-4 py-2.5 rounded-sm font-mono text-[10px] uppercase tracking-widest hover:bg-white/10 hover:border-white/20 transition-all"
+                              className="flex items-center gap-2 bg-[#0A0E17] border border-[#38BDF8]/20 text-[#94A3B8] hover:text-white px-4 py-2.5 rounded-sm font-mono text-[10px] uppercase tracking-widest hover:border-brand transition-all"
                             >
-                              <Code className="w-3.5 h-3.5 text-white/40" />
+                              <Code className="w-3.5 h-3.5 text-[#38BDF8]" />
                               Repository
                             </a>
                           </div>
@@ -259,7 +259,7 @@ export default function Projects() {
                           <button 
                             type="button"
                             onClick={() => handleProjectClick(index)}
-                            className="text-white/30 hover:text-brand font-mono text-[9px] uppercase tracking-[0.2em] flex items-center gap-1.5 cursor-pointer select-none transition-colors pt-2"
+                            className="text-[#94A3B8] hover:text-brand font-mono text-[9px] uppercase tracking-[0.2em] flex items-center gap-1.5 cursor-pointer select-none transition-colors pt-2"
                           >
                             <span>Click to collapse specs</span>
                             <span>↑</span>
@@ -276,12 +276,12 @@ export default function Projects() {
 
           {/* Preview Image Column */}
           <div className="col-span-12 lg:col-span-7 relative h-[60vh] lg:h-[70vh] sticky top-24" id="project-preview">
-            <div className="absolute inset-0 bg-[#111] overflow-hidden">
-               {/* Frame Corners */}
-               <div className="absolute top-0 left-0 w-8 h-8 border-l border-t border-white/20 z-20" />
-               <div className="absolute top-0 right-0 w-8 h-8 border-r border-t border-white/20 z-20" />
-               <div className="absolute bottom-0 left-0 w-8 h-8 border-l border-bottom border-white/20 z-20" />
-               <div className="absolute bottom-0 right-0 w-8 h-8 border-r border-bottom border-white/20 z-20" />
+            <div className="absolute inset-0 bg-[#131B2E] border border-[#38BDF8]/20 overflow-hidden rounded-sm shadow-2xl">
+               {/* Frame Corners in Cool Ice Blue */}
+               <div className="absolute top-0 left-0 w-8 h-8 border-l-2 border-t-2 border-[#38BDF8]/40 z-20" />
+               <div className="absolute top-0 right-0 w-8 h-8 border-r-2 border-t-2 border-[#38BDF8]/40 z-20" />
+               <div className="absolute bottom-0 left-0 w-8 h-8 border-l-2 border-b-2 border-[#38BDF8]/40 z-20" />
+               <div className="absolute bottom-0 right-0 w-8 h-8 border-r-2 border-b-2 border-[#38BDF8]/40 z-20" />
 
                <AnimatePresence mode="wait">
                  <motion.div
@@ -302,17 +302,17 @@ export default function Projects() {
                    {/* Project Metadata Overlay */}
                    <div className="absolute bottom-10 left-10 right-10 flex items-end justify-between z-30">
                       <div className="space-y-1">
-                        <div className="flex items-center gap-2 text-brand font-mono text-[10px] uppercase">
-                          <ShieldCheck className="w-3 h-3" /> Certified Dev
+                        <div className="flex items-center gap-2 text-brand font-mono text-[10px] uppercase font-semibold">
+                          <ShieldCheck className="w-3.5 h-3.5" /> Certified Dev
                         </div>
-                        <h4 className="font-display text-4xl uppercase font-bold tracking-tighter">
+                        <h4 className="font-display text-4xl uppercase font-bold tracking-tighter text-white">
                           {activeProject.title}
                         </h4>
                       </div>
                       
                       <button 
                         onClick={() => handleProjectClick(activeIndex)}
-                        className="flex items-center gap-3 bg-white text-black px-6 py-3 rounded-sm font-mono text-xs uppercase tracking-widest hover:bg-brand hover:text-white transition-all group"
+                        className="flex items-center gap-3 bg-brand text-[#0A0E17] font-bold px-6 py-3 rounded-sm font-mono text-xs uppercase tracking-widest hover:bg-brand-light hover:shadow-[0_0_20px_rgba(0,230,165,0.4)] transition-all group"
                       >
                          {expandedIndex === activeIndex ? 'Minimize Details' : 'Expand Details'}
                          <ExternalLink className="w-3 h-3 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
@@ -320,15 +320,15 @@ export default function Projects() {
                    </div>
 
                    {/* Overlay Gradients */}
-                   <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/20" />
-                   <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-transparent" />
+                   <div className="absolute inset-0 bg-gradient-to-t from-[#0A0E17] via-transparent to-[#0A0E17]/30" />
+                   <div className="absolute inset-0 bg-gradient-to-r from-[#0A0E17]/60 via-transparent to-transparent" />
                  </motion.div>
                </AnimatePresence>
             </div>
             
             {/* Tech Specs Label (Right Side) */}
-            <div className="absolute -right-4 top-1/2 -translate-y-1/2 vertical-rl flex items-center gap-4 text-white/20">
-               <div className="w-[1px] h-12 bg-white/10" />
+            <div className="absolute -right-4 top-1/2 -translate-y-1/2 vertical-rl flex items-center gap-4 text-[#94A3B8]/60">
+               <div className="w-[1px] h-12 bg-[#38BDF8]/20" />
                <span className="uppercase text-[9px] tracking-[0.4em] font-mono whitespace-nowrap">Technical Specs Attached / {activeProject.year}</span>
             </div>
           </div>

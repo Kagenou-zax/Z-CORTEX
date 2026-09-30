@@ -24,11 +24,12 @@ export default function Hero({ onStartProjectClick }: HeroProps) {
   };
 
   return (
-    <div className="relative min-h-screen w-full flex flex-col overflow-hidden pt-20" id="home">
+    <div className="relative min-h-screen w-full flex flex-col overflow-hidden pt-20 bg-[#0A0E17]" id="home">
       {/* Background and Vertical Lines */}
       <div className="absolute inset-0 pointer-events-none" id="bg-lines">
-        <div className="absolute left-[12%] top-0 bottom-0 w-[1px] bg-white/5" />
-        <div className="absolute left-[12%] top-[20%] w-4 h-[1px] bg-brand/50 -translate-x-1/2" />
+        <div className="absolute left-[12%] top-0 bottom-0 w-[1px] bg-[#38BDF8]/10" />
+        <div className="absolute left-[12%] top-[20%] w-4 h-[1px] bg-brand/60 -translate-x-1/2" />
+        <div className="absolute right-[10%] top-0 bottom-0 w-[1px] bg-[#38BDF8]/5" />
       </div>
 
       <motion.div 
@@ -39,8 +40,8 @@ export default function Hero({ onStartProjectClick }: HeroProps) {
       >
         {/* Top Left Label - Side Rail */}
         <div className="absolute left-0 top-1/4 -translate-y-1/2 hidden lg:flex flex-col items-center gap-4" id="side-label">
-          <div className="w-[1px] h-12 bg-white/20" />
-          <span className="vertical-rl uppercase tracking-[0.3em] text-[10px] text-white/40 font-medium">Modern Development</span>
+          <div className="w-[1px] h-12 bg-[#38BDF8]/30" />
+          <span className="vertical-rl uppercase tracking-[0.3em] text-[10px] text-[#94A3B8] font-medium">Modern Development</span>
         </div>
 
         {/* Main Content Area */}
@@ -48,7 +49,7 @@ export default function Hero({ onStartProjectClick }: HeroProps) {
           {/* Headline and Image Container */}
           <div className="col-span-12 lg:col-span-8 relative flex flex-col justify-center py-20" id="main-content">
             <motion.div variants={itemVariants} className="relative z-20">
-              <h1 className="font-display text-[8vw] lg:text-[7vw] leading-[0.9] font-medium tracking-tight uppercase max-w-[10ch]">
+              <h1 className="font-display text-[8vw] lg:text-[7vw] leading-[0.9] font-medium tracking-tight uppercase max-w-[10ch] text-white">
                 Where <br />
                 Creative <br />
                 Meet <br />
@@ -60,7 +61,7 @@ export default function Hero({ onStartProjectClick }: HeroProps) {
               
               <button 
                 onClick={onStartProjectClick}
-                className="mt-12 bg-white text-black px-10 py-4 rounded-sm font-medium tracking-widest text-sm uppercase hover:bg-brand hover:text-white transition-all duration-300"
+                className="mt-12 bg-brand text-[#0A0E17] font-bold px-10 py-4 rounded-sm tracking-widest text-sm uppercase hover:bg-brand-light hover:shadow-[0_0_30px_rgba(0,230,165,0.4)] transition-all duration-300"
               >
                 Start a Project
               </button>
@@ -80,8 +81,8 @@ export default function Hero({ onStartProjectClick }: HeroProps) {
                   className="w-full h-auto object-cover opacity-80"
                   referrerPolicy="no-referrer"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
-                <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0E17] via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-r from-[#0A0E17] via-transparent to-transparent" />
               </div>
             </motion.div>
           </div>
@@ -93,7 +94,7 @@ export default function Hero({ onStartProjectClick }: HeroProps) {
                 <a 
                   key={text} 
                   href="#" 
-                  className={`text-xs uppercase tracking-[0.2em] hover:text-brand transition-colors ${text === 'Featured Work' ? 'text-white flex items-center gap-2' : 'text-white/40'}`}
+                  className={`text-xs uppercase tracking-[0.2em] hover:text-brand transition-colors ${text === 'Featured Work' ? 'text-white flex items-center gap-2 font-medium' : 'text-[#94A3B8]'}`}
                 >
                   {text === 'Featured Work' && <ArrowRight className="w-3 h-3 text-brand" />}
                   {text}
@@ -104,31 +105,29 @@ export default function Hero({ onStartProjectClick }: HeroProps) {
         </div>
 
         {/* Bottom Cards Section */}
-        <div className="grid grid-cols-12 gap-8 py-12 border-t border-white/5" id="bottom-cards">
+        <div className="grid grid-cols-12 gap-8 py-12 border-t border-[#38BDF8]/10" id="bottom-cards">
           {/* Scalable Code Card */}
           <motion.div variants={itemVariants} className="col-span-12 md:col-span-4 lg:col-span-3">
-             <div className="relative overflow-hidden group">
+             <div className="relative overflow-hidden group bg-[#131B2E] border border-[#38BDF8]/15 rounded-sm p-8 space-y-4 transition-all duration-300 hover:border-brand/40 hover:shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
                 <div className="absolute -left-1 -top-1 w-4 h-4 border-l border-t border-brand" />
-                <div className="p-8 space-y-4">
-                  <h3 className="font-display text-lg tracking-widest uppercase font-medium">Scalable Code</h3>
-                  <p className="text-white/40 text-xs leading-relaxed max-w-[25ch]">
-                    I write maintainable, efficient, and scalable code using modern development practices and frameworks.
-                  </p>
-                  <button className="w-10 h-10 flex items-center justify-center bg-white text-black hover:bg-brand transition-colors">
-                    <ArrowRight className="w-4 h-4" />
-                  </button>
-                </div>
+                <h3 className="font-display text-lg tracking-widest uppercase font-medium text-white">Scalable Code</h3>
+                <p className="text-[#94A3B8] text-xs leading-relaxed max-w-[25ch]">
+                  I write maintainable, efficient, and scalable code using modern development practices and frameworks.
+                </p>
+                <button className="w-10 h-10 flex items-center justify-center bg-brand text-[#0A0E17] hover:bg-brand-light transition-colors rounded-sm font-bold">
+                  <ArrowRight className="w-4 h-4" />
+                </button>
              </div>
           </motion.div>
 
           {/* Full-Stack Development Card */}
           <motion.div variants={itemVariants} className="col-span-12 md:col-span-5 lg:col-span-4 self-end">
             <div className="space-y-6">
-              <h2 className="font-display text-3xl font-medium uppercase tracking-widest leading-tight">
+              <h2 className="font-display text-3xl font-medium uppercase tracking-widest leading-tight text-white">
                 Full-Stack <br />
                 <span className="text-brand">Development</span>
               </h2>
-              <p className="text-white/40 text-xs leading-relaxed max-w-[35ch]">
+              <p className="text-[#94A3B8] text-xs leading-relaxed max-w-[35ch]">
                 From frontend interfaces to backend systems, I build complete and scalable web solutions.
               </p>
             </div>
@@ -139,27 +138,27 @@ export default function Hero({ onStartProjectClick }: HeroProps) {
             variants={itemVariants} 
             className="col-span-12 md:col-span-3 lg:col-span-4 lg:col-start-9 relative"
           >
-            <div className="glass-card p-10 space-y-12 relative overflow-hidden">
+            <div className="bg-[#131B2E] border border-[#38BDF8]/15 p-10 space-y-12 relative overflow-hidden rounded-sm backdrop-blur-md hover:border-brand/35 transition-colors">
                <div className="absolute right-4 top-4 text-brand font-mono text-[10px]">[01]</div>
                <div className="space-y-4">
-                 <h3 className="font-display text-base uppercase tracking-widest leading-normal">
+                 <h3 className="font-display text-base uppercase tracking-widest leading-normal text-white">
                    Building Digital <br /> Solutions
                  </h3>
-                 <p className="text-white/40 text-xs leading-relaxed">
+                 <p className="text-[#94A3B8] text-xs leading-relaxed">
                    I help startups and businesses turn ideas into real products through modern web technologies and thoughtful development.
                  </p>
                </div>
                
                <div className="flex flex-col gap-6">
                  <div className="flex gap-4">
-                    <div className="w-24 h-16 bg-white/5 rounded-sm overflow-hidden border border-white/10 group">
+                    <div className="w-24 h-16 bg-[#0A0E17] rounded-sm overflow-hidden border border-[#38BDF8]/15 group">
                        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=200" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" alt="Work" />
                     </div>
-                    <div className="w-24 h-16 bg-white/5 rounded-sm overflow-hidden border border-white/10 group">
+                    <div className="w-24 h-16 bg-[#0A0E17] rounded-sm overflow-hidden border border-[#38BDF8]/15 group">
                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=200" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" alt="Work" />
                     </div>
                  </div>
-                 <a href="#" className="font-display text-xs uppercase tracking-[0.3em] font-light hover:text-brand transition-colors inline-block pb-1 border-b border-white/20 w-fit">
+                 <a href="#" className="font-display text-xs uppercase tracking-[0.3em] font-light text-white/90 hover:text-brand transition-colors inline-block pb-1 border-b border-[#38BDF8]/30 w-fit">
                     See Projects
                  </a>
                </div>

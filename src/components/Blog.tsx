@@ -32,7 +32,7 @@ const articles = [
 
 export default function Blog() {
   return (
-    <section className="relative bg-black py-32 border-t border-white/5" id="blog">
+    <section className="relative bg-[#0A0E17] py-32 border-t border-[#38BDF8]/10" id="blog">
       <div className="max-w-7xl mx-auto px-8">
         
         {/* Header */}
@@ -40,53 +40,53 @@ export default function Blog() {
           <div className="space-y-4">
             <div className="flex items-center gap-2">
               <BookOpenText className="w-4 h-4 text-brand" />
-              <span className="font-mono text-[10px] uppercase tracking-[0.4em] text-white/40">Knowledge Base</span>
+              <span className="font-mono text-[10px] uppercase tracking-[0.4em] text-[#94A3B8]">Knowledge Base</span>
             </div>
-            <h2 className="font-display text-5xl md:text-7xl uppercase tracking-tighter leading-none font-medium">
+            <h2 className="font-display text-5xl md:text-7xl uppercase tracking-tighter leading-none font-medium text-white">
               Journal & <br />
-              <span className="text-white/20">Insights</span>
+              <span className="text-[#38BDF8]/30">Insights</span>
             </h2>
           </div>
-          <button className="font-display text-[11px] uppercase tracking-[0.3em] font-medium border-b border-brand pb-1 hover:text-brand transition-colors">
+          <button className="font-display text-[11px] uppercase tracking-[0.3em] font-medium border-b border-brand pb-1 text-white hover:text-brand transition-colors">
             View All Articles
           </button>
         </div>
 
         {/* Blog Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5 border border-white/5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {articles.map((article, idx) => (
             <motion.a
               key={idx}
               href={article.href}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ scale: 1.02, backgroundColor: "rgba(255, 255, 255, 0.03)" }}
+              whileHover={{ scale: 1.02, y: -4 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="bg-black p-10 group cursor-pointer border border-transparent hover:border-white/10 transition-all duration-500 flex flex-col justify-between min-h-[400px] z-10 no-underline text-white block"
+              className="bg-[#131B2E] p-10 group cursor-pointer border border-[#38BDF8]/15 hover:border-brand/50 hover:shadow-[0_20px_40px_rgba(0,0,0,0.5)] transition-all duration-500 flex flex-col justify-between min-h-[400px] z-10 no-underline text-white block rounded-sm"
               id={`blog-card-${idx}`}
             >
               <div className="space-y-6">
                 <div className="space-y-4">
                   <div className="flex items-center gap-4 text-[10px] font-mono uppercase tracking-widest">
                     <span className="text-brand font-bold">{article.category}</span>
-                    <span className="text-white/30">{article.date}</span>
+                    <span className="text-[#94A3B8]/60">{article.date}</span>
                   </div>
                   
-                  <h3 className="relative font-display text-2xl uppercase font-medium leading-tight tracking-tight group-hover:text-brand transition-colors duration-300 w-fit text-white">
+                  <h3 className="relative font-display text-2xl uppercase font-medium leading-tight tracking-tight text-white group-hover:text-brand transition-colors duration-300 w-fit">
                     {article.title}
                     <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-brand transition-all duration-500 group-hover:w-full" />
                   </h3>
-                  <p className="text-white/40 text-[13px] leading-relaxed">
+                  <p className="text-[#94A3B8] text-[13px] leading-relaxed">
                     {article.excerpt}
                   </p>
                 </div>
               </div>
 
-              <div className="pt-8 flex items-center justify-between border-t border-white/5">
-                <span className="text-[10px] uppercase tracking-[0.3em] font-mono text-white/20 group-hover:text-white/60 transition-colors">Read More</span>
-                <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-brand group-hover:border-brand transition-all">
-                  <ArrowRight className="w-4 h-4 text-white group-hover:text-black transition-colors" />
+              <div className="pt-8 flex items-center justify-between border-t border-[#38BDF8]/15">
+                <span className="text-[10px] uppercase tracking-[0.3em] font-mono text-[#94A3B8] group-hover:text-white transition-colors">Read More</span>
+                <div className="w-8 h-8 rounded-full border border-[#38BDF8]/30 flex items-center justify-center group-hover:bg-brand group-hover:border-brand transition-all">
+                  <ArrowRight className="w-4 h-4 text-white group-hover:text-[#0A0E17] transition-colors" />
                 </div>
               </div>
             </motion.a>

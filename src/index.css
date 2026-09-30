@@ -6,28 +6,52 @@
   --font-display: "Space Grotesk", sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
   
-  --color-brand: #EA580C; /* Orange-600 */
-  --color-brand-light: #FB923C; /* Orange-400 */
-  --color-brand-dark: #C2410C; /* Orange-700 */
+  --color-bg-midnight: #0A0E17;
+  --color-surface-navy: #131B2E;
+  --color-surface-card: #131B2E;
+  --color-surface-hover: #1E293B;
+
+  --color-brand: #00E6A5; /* Mint / Emerald Green */
+  --color-brand-light: #34EEB9;
+  --color-brand-dark: #10B981;
+  --color-brand-emerald: #10B981;
+
+  --color-ice: #38BDF8; /* Cool Ice Blue */
+  --color-ice-light: #7DD3FC;
+  --color-ice-dark: #0284C7;
+
+  --color-slate-text: #94A3B8; /* Slate Blue text */
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
+    background-color: #0A0E17;
+    color: #FFFFFF;
   }
   
   body {
-    @apply bg-black text-white antialiased font-sans overflow-x-hidden;
+    @apply bg-[#0A0E17] text-white antialiased font-sans overflow-x-hidden;
+    background-color: #0A0E17;
+  }
+
+  ::selection {
+    background-color: #00E6A5;
+    color: #0A0E17;
   }
 }
 
 @layer utilities {
-  .text-shadow-orange {
-    text-shadow: 0 0 20px rgba(234, 88, 12, 0.4);
+  .text-shadow-mint {
+    text-shadow: 0 0 20px rgba(0, 230, 165, 0.4);
+  }
+
+  .text-shadow-ice {
+    text-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
   }
   
   .glass-card {
-    @apply bg-white/5 backdrop-blur-md border border-white/10;
+    @apply bg-[#131B2E]/90 backdrop-blur-md border border-[#38BDF8]/15;
   }
 
   .vertical-rl {

@@ -28,25 +28,25 @@ export default function Process() {
   const [activeStep, setActiveStep] = useState(steps[0]);
 
   return (
-    <section className="relative bg-black py-32 overflow-hidden border-t border-white/5" id="about">
+    <section className="relative bg-[#0A0E17] py-32 overflow-hidden border-t border-[#38BDF8]/10" id="about">
       <div className="max-w-7xl mx-auto px-8">
         
         {/* Top Header Information */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-8">
            <div className="space-y-2">
              <div className="flex items-center gap-2 mb-4">
-                <div className="w-2 h-2 rounded-full bg-brand animate-pulse" />
-                <span className="font-mono text-[10px] uppercase tracking-[0.4em] text-white/40">The Methodology</span>
+                <div className="w-2 h-2 rounded-full bg-brand animate-pulse shadow-[0_0_8px_rgba(0,230,165,0.8)]" />
+                <span className="font-mono text-[10px] uppercase tracking-[0.4em] text-[#94A3B8]">The Methodology</span>
              </div>
-             <h2 className="font-display text-4xl uppercase tracking-tight font-medium">
+             <h2 className="font-display text-4xl uppercase tracking-tight font-medium text-white">
                Excellence Without <br />
-               <span className="text-white/20">Compromise</span>
+               <span className="text-[#38BDF8]/30">Compromise</span>
              </h2>
            </div>
            
-           <div className="flex items-center gap-4 text-white/30 font-mono text-[9px] uppercase tracking-widest border-b border-white/10 pb-2">
+           <div className="flex items-center gap-4 text-[#94A3B8] font-mono text-[9px] uppercase tracking-widest border-b border-[#38BDF8]/20 pb-2">
              <span>Noirbyte Series II</span>
-             <span className="w-8 h-[1px] bg-white/10" />
+             <span className="w-8 h-[1px] bg-[#38BDF8]/30" />
              <span>Est. 2024</span>
            </div>
         </div>
@@ -62,8 +62,8 @@ export default function Process() {
                  onClick={() => setActiveStep(step)}
                  className={`w-full text-left px-6 py-3 rounded-sm transition-all duration-300 font-display text-[11px] uppercase tracking-widest border ${
                    activeStep.id === step.id 
-                     ? 'bg-white text-black border-white shadow-[0_0_20px_rgba(255,255,255,0.1)]' 
-                     : 'bg-transparent text-white/40 border-white/5 hover:border-white/20 hover:text-white'
+                     ? 'bg-brand text-[#0A0E17] font-bold border-brand shadow-[0_0_20px_rgba(0,230,165,0.3)]' 
+                     : 'bg-[#131B2E] text-[#94A3B8] border-[#38BDF8]/15 hover:border-brand/40 hover:text-white'
                  }`}
                >
                  {step.label}
@@ -73,10 +73,10 @@ export default function Process() {
 
           {/* Central Display Area */}
           <div className="col-span-12 md:col-span-9 lg:col-span-10 relative group">
-             <div className="absolute inset-0 bg-[#0A0A0A] border border-white/5 overflow-hidden">
+             <div className="absolute inset-0 bg-[#131B2E] border border-[#38BDF8]/20 overflow-hidden rounded-sm shadow-xl">
                 
                 {/* Background Typography */}
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none opacity-5">
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none opacity-5 text-[#38BDF8]">
                    <h3 className="font-display text-[25vw] font-bold uppercase tracking-tighter">
                      {activeStep.label}
                    </h3>
@@ -97,7 +97,7 @@ export default function Process() {
                         className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 transition-all duration-1000"
                         referrerPolicy="no-referrer"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#131B2E] via-transparent to-transparent opacity-80" />
                    </div>
                 </motion.div>
 
@@ -109,34 +109,34 @@ export default function Process() {
                      animate={{ opacity: 1, x: 0 }}
                      className="space-y-4"
                    >
-                      <h4 className="font-display text-4xl uppercase font-bold tracking-tight text-white/90">
+                      <h4 className="font-display text-4xl uppercase font-bold tracking-tight text-white">
                         {activeStep.title}
                       </h4>
-                      <p className="text-white/40 text-xs leading-relaxed">
+                      <p className="text-[#94A3B8] text-xs leading-relaxed">
                         {activeStep.desc}
                       </p>
                    </motion.div>
                 </div>
 
                 {/* Corner Decoration */}
-                <div className="absolute top-4 right-4 text-brand/40">
-                   <Globe className="w-5 h-5 animate-spin-slow" />
+                <div className="absolute top-4 right-4 text-brand">
+                   <Globe className="w-5 h-5 animate-spin-slow opacity-80" />
                 </div>
              </div>
           </div>
         </div>
 
         {/* Bottom Specs Bar - Replicating the RR Spec Cards */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-px bg-white/5 border border-white/5 mt-12 rounded-sm overflow-hidden">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-px bg-[#38BDF8]/10 border border-[#38BDF8]/15 mt-12 rounded-sm overflow-hidden">
           {stats.map((stat, idx) => (
-            <div key={idx} className="bg-black p-8 space-y-4 border-r border-white/5 last:border-r-0">
+            <div key={idx} className="bg-[#131B2E] p-8 space-y-4 border-r border-[#38BDF8]/10 last:border-r-0">
                <div className="flex items-center justify-between">
                  <span className="font-display font-medium text-[11px] uppercase tracking-widest text-white/90">{stat.label}</span>
-                 <div className="text-brand/40">{stat.icon}</div>
+                 <div className="text-brand">{stat.icon}</div>
                </div>
                <div className="space-y-1">
-                 <p className="text-[13px] font-mono text-white/60">{stat.value}</p>
-                 <div className="w-full h-[1px] bg-gradient-to-r from-brand/40 to-transparent" />
+                 <p className="text-[13px] font-mono text-[#94A3B8]">{stat.value}</p>
+                 <div className="w-full h-[1px] bg-gradient-to-r from-brand to-transparent" />
                </div>
             </div>
           ))}

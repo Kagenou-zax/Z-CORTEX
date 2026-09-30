@@ -20,10 +20,10 @@ const PROJECT_TYPES = [
 ];
 
 const BUDGET_OPTIONS = [
-  { id: 'less_1k', label: 'Less than $1k', value: 'Less than $1k' },
-  { id: '1k_3k', label: '$1k - $3k', value: '$1k - $3k' },
-  { id: '3k_5k', label: '$3k - $5k', value: '$3k - $5k' },
-  { id: '5k_plus', label: '$5k+', value: '$5k+' }
+  { id: '15k_50k', label: '15k - 50k NGN', value: '15k - 50k NGN' },
+  { id: '50k_100k', label: '50k - 100k NGN', value: '50k - 100k NGN' },
+  { id: '100k_250k', label: '100k - 250k NGN', value: '100k - 250k NGN' },
+  { id: '250k_plus', label: '250k+ NGN', value: '250k+ NGN' }
 ];
 
 const FEATURE_TAGS = [
@@ -249,21 +249,21 @@ export default function Questionnaire({ onBack }: QuestionnaireProps) {
   };
 
   const getInputClassName = (hasError: boolean, isTouched: boolean) => {
-    const base = "w-full backdrop-blur-md p-4 text-white text-sm outline-none transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] disabled:opacity-50 rounded-sm placeholder-white/20 border";
+    const base = "w-full backdrop-blur-md p-4 text-white text-sm outline-none transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] disabled:opacity-50 rounded-sm placeholder-[#94A3B8]/40 border";
     if (isTouched && hasError) {
-      return `${base} bg-red-500/[0.015] border-red-500/20 hover:bg-red-500/[0.03] hover:border-red-500/30 focus:bg-red-500/[0.02] focus:border-red-500 focus:ring-1 focus:ring-red-500/10 shadow-[0_0_15px_rgba(239,68,68,0.02)] focus:shadow-[0_0_20px_rgba(239,68,68,0.1)]`;
+      return `${base} bg-red-500/[0.03] border-red-500/40 hover:border-red-500/60 focus:border-red-500 focus:ring-1 focus:ring-red-500/20 shadow-[0_0_15px_rgba(239,68,68,0.05)]`;
     }
-    return `${base} bg-white/[0.01] border-white/5 hover:bg-white/[0.03] hover:border-white/15 focus:bg-white/[0.04] focus:border-brand/40 focus:ring-1 focus:ring-brand/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.01)] focus:shadow-[0_0_25px_rgba(255,255,255,0.02)]`;
+    return `${base} bg-[#0A0E17] border-[#38BDF8]/20 hover:border-[#38BDF8]/40 focus:border-brand focus:ring-1 focus:ring-brand/20 shadow-[inset_0_1px_1px_rgba(255,255,255,0.01)] focus:shadow-[0_0_20px_rgba(0,230,165,0.1)]`;
   };
 
   return (
-    <div className="relative min-h-screen bg-[#000000] text-white flex flex-col justify-between pt-28 pb-20 selection:bg-brand selection:text-black" id="project-questionnaire-page">
+    <div className="relative min-h-screen bg-[#0A0E17] text-white flex flex-col justify-between pt-28 pb-20 selection:bg-brand selection:text-[#0A0E17]" id="project-questionnaire-page">
       {/* Decorative architectural grid lines */}
-      <div className="absolute inset-0 pointer-events-none opacity-20 z-0" id="questionnaire-architectural-bg">
-        <div className="absolute left-[8%] top-0 bottom-0 w-[1px] bg-white/5" />
-        <div className="absolute right-[8%] top-0 bottom-0 w-[1px] bg-white/5" />
-        <div className="absolute left-1/2 top-0 bottom-0 w-[1px] bg-white/5 -translate-x-1/2" />
-        <div className="absolute top-[30%] left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-brand/5 blur-[180px] rounded-full" />
+      <div className="absolute inset-0 pointer-events-none opacity-25 z-0" id="questionnaire-architectural-bg">
+        <div className="absolute left-[8%] top-0 bottom-0 w-[1px] bg-[#38BDF8]/10" />
+        <div className="absolute right-[8%] top-0 bottom-0 w-[1px] bg-[#38BDF8]/10" />
+        <div className="absolute left-1/2 top-0 bottom-0 w-[1px] bg-[#38BDF8]/10 -translate-x-1/2" />
+        <div className="absolute top-[30%] left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-brand/10 blur-[180px] rounded-full" />
       </div>
 
       <div className="relative z-10 w-full max-w-4xl mx-auto px-6 md:px-8 flex-1">
@@ -272,7 +272,7 @@ export default function Questionnaire({ onBack }: QuestionnaireProps) {
           <button 
             type="button"
             onClick={onBack}
-            className="flex items-center gap-2 group text-white/50 hover:text-white transition-colors text-xs uppercase tracking-[0.2em] font-mono border border-white/5 hover:border-white/20 bg-white/[0.01] px-4 py-2 rounded-sm"
+            className="flex items-center gap-2 group text-[#94A3B8] hover:text-white transition-colors text-xs uppercase tracking-[0.2em] font-mono border border-[#38BDF8]/20 hover:border-brand bg-[#131B2E] px-4 py-2 rounded-sm"
           >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
             Go Back
@@ -283,13 +283,13 @@ export default function Questionnaire({ onBack }: QuestionnaireProps) {
         <div className="mb-16 space-y-4" id="questionnaire-title-block">
           <div className="flex items-center gap-2 text-brand">
             <Sparkle className="w-4 h-4 fill-brand animate-pulse" />
-            <span className="font-mono text-[9px] uppercase tracking-[0.3em]">Assemble Specs</span>
+            <span className="font-mono text-[9px] uppercase tracking-[0.3em] font-semibold">Assemble Specs</span>
           </div>
-          <h1 className="font-display text-4xl md:text-6xl uppercase tracking-tight font-medium leading-[1.05]">
+          <h1 className="font-display text-4xl md:text-6xl uppercase tracking-tight font-medium leading-[1.05] text-white">
             Start a project <br />
-            <span className="text-white/40 font-mono font-light text-2xl md:text-3xl tracking-normal normal-case italic">Define your application specifications</span>
+            <span className="text-[#38BDF8]/40 font-mono font-light text-2xl md:text-3xl tracking-normal normal-case italic">Define your application specifications</span>
           </h1>
-          <p className="text-white/30 text-xs md:text-sm font-sans max-w-xl leading-relaxed">
+          <p className="text-[#94A3B8] text-xs md:text-sm font-sans max-w-xl leading-relaxed">
             Fill out this brief application architecture planner. Once received, I will review your requirements, design scope constraints, and structure a custom blueprint within 24 hours.
           </p>
         </div>
@@ -310,12 +310,12 @@ export default function Questionnaire({ onBack }: QuestionnaireProps) {
                 }
               }}
               exit={{ opacity: 0, y: -20, transition: { duration: 0.3 } }}
-              className="mb-12 bg-brand/5 border border-brand/30 p-8 md:p-12 rounded-sm text-center space-y-6 shadow-[0_20px_50px_rgba(234,88,12,0.05)] relative overflow-hidden"
+              className="mb-12 bg-[#131B2E] border border-brand/40 p-8 md:p-12 rounded-sm text-center space-y-6 shadow-[0_20px_50px_rgba(0,230,165,0.12)] relative overflow-hidden"
               id="questionnaire-success-message"
             >
               {/* Subtle industrial/premium accents */}
-              <div className="absolute top-0 right-0 w-32 h-32 bg-brand/5 rounded-full blur-2xl pointer-events-none" />
-              <div className="absolute -inset-px border border-white/5 pointer-events-none rounded-sm" />
+              <div className="absolute top-0 right-0 w-32 h-32 bg-brand/10 rounded-full blur-2xl pointer-events-none" />
+              <div className="absolute -inset-px border border-[#38BDF8]/20 pointer-events-none rounded-sm" />
 
               <motion.div 
                 initial={{ scale: 0, rotate: -15 }}
@@ -324,7 +324,7 @@ export default function Questionnaire({ onBack }: QuestionnaireProps) {
                   rotate: 0,
                   transition: { type: "spring", stiffness: 200, damping: 15 }
                 }}
-                className="w-16 h-16 bg-brand text-black rounded-full flex items-center justify-center mx-auto text-xl font-bold shadow-lg shadow-brand/25"
+                className="w-16 h-16 bg-brand text-[#0A0E17] rounded-full flex items-center justify-center mx-auto text-xl font-bold shadow-lg shadow-brand/30"
                 id="success-icon-badge"
               >
                 ✔
@@ -341,7 +341,7 @@ export default function Questionnaire({ onBack }: QuestionnaireProps) {
               <motion.p 
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }}
-                className="font-sans text-xs md:text-sm text-white/60 max-w-sm md:max-w-md mx-auto leading-relaxed"
+                className="font-sans text-xs md:text-sm text-[#94A3B8] max-w-sm md:max-w-md mx-auto leading-relaxed"
               >
                 Thank you for your response! Your application profile block has been successfully uploaded. A design notification was dispatched to <strong className="text-white">faadilnurudeen6@gmail.com</strong>. I'll reach out to schedule our session shortly.
               </motion.p>
@@ -354,7 +354,7 @@ export default function Questionnaire({ onBack }: QuestionnaireProps) {
                 <button 
                   type="button"
                   onClick={onBack}
-                  className="bg-white text-black text-[10px] uppercase font-bold tracking-[0.2em] px-8 py-3.5 rounded-sm hover:bg-brand hover:text-white hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
+                  className="bg-brand text-[#0A0E17] text-[10px] uppercase font-bold tracking-[0.2em] px-8 py-3.5 rounded-sm hover:bg-brand-light hover:shadow-[0_0_20px_rgba(0,230,165,0.4)] transition-all duration-300"
                 >
                   Back to Homepage
                 </button>
@@ -379,11 +379,11 @@ export default function Questionnaire({ onBack }: QuestionnaireProps) {
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: 3 }}
                   exit={{ opacity: 0, height: 0 }}
-                  className="relative w-full bg-white/5 overflow-hidden rounded-full mb-8"
+                  className="relative w-full bg-[#131B2E] overflow-hidden rounded-full mb-8"
                   id="questionnaire-loader-bar"
                 >
                   <motion.div 
-                    className="absolute top-0 bottom-0 left-0 bg-brand shadow-[0_0_10px_rgba(234,88,12,0.8)] rounded-full"
+                    className="absolute top-0 bottom-0 left-0 bg-brand shadow-[0_0_10px_rgba(0,230,165,0.8)] rounded-full"
                     style={{ width: '40%' }}
                     animate={{
                       left: ['-40%', '100%'],
@@ -399,8 +399,8 @@ export default function Questionnaire({ onBack }: QuestionnaireProps) {
             </AnimatePresence>
 
             {/* SECTION 1: Client Basics */}
-            <div className="glass-card p-6 md:p-8 rounded-sm space-y-6 relative border-white/5" id="field-block-basics">
-              <div className="absolute top-0 left-8 -translate-y-1/2 bg-black px-4 py-1 text-brand font-mono text-[9px] uppercase tracking-widest border border-white/5">
+            <div className="bg-[#131B2E] border border-[#38BDF8]/15 p-6 md:p-8 rounded-sm space-y-6 relative" id="field-block-basics">
+              <div className="absolute top-0 left-8 -translate-y-1/2 bg-[#0A0E17] px-4 py-1 text-brand font-mono text-[9px] uppercase tracking-widest border border-[#38BDF8]/20">
                 [01] Client Profile
               </div>
 
@@ -408,13 +408,13 @@ export default function Questionnaire({ onBack }: QuestionnaireProps) {
                 {/* Full name */}
                 <div className="space-y-2" id="field-block-name">
                   <div className="flex justify-between items-center h-4">
-                    <label className="font-mono text-[10px] uppercase tracking-widest text-white/40">Full Name</label>
+                    <label className="font-mono text-[10px] uppercase tracking-widest text-[#94A3B8]">Full Name</label>
                     {touched.name && errors.name && (
                       <span className="font-mono text-[9px] uppercase tracking-wider text-red-500">{errors.name}</span>
                     )}
                   </div>
                   <input 
-                    type="text"
+                    type="text" 
                     name="name"
                     required
                     disabled={submission.submitting}
@@ -429,13 +429,13 @@ export default function Questionnaire({ onBack }: QuestionnaireProps) {
                 {/* Email Address */}
                 <div className="space-y-2" id="field-block-email">
                   <div className="flex justify-between items-center h-4">
-                    <label className="font-mono text-[10px] uppercase tracking-widest text-white/40">Email Address</label>
+                    <label className="font-mono text-[10px] uppercase tracking-widest text-[#94A3B8]">Email Address</label>
                     {touched.email && errors.email && (
                       <span className="font-mono text-[9px] uppercase tracking-wider text-red-500">{errors.email}</span>
                     )}
                   </div>
                   <input 
-                    type="email"
+                    type="email" 
                     name="email"
                     required
                     disabled={submission.submitting}
@@ -450,9 +450,9 @@ export default function Questionnaire({ onBack }: QuestionnaireProps) {
 
               {/* Company name (Optional) */}
               <div className="space-y-2">
-                <label className="font-mono text-[10px] uppercase tracking-widest text-white/40">Company / Organization <span className="text-white/20 font-light">(Optional)</span></label>
+                <label className="font-mono text-[10px] uppercase tracking-widest text-[#94A3B8]">Company / Organization <span className="text-[#94A3B8]/40 font-light">(Optional)</span></label>
                 <input 
-                  type="text"
+                  type="text" 
                   name="company"
                   disabled={submission.submitting}
                   value={formData.company}
@@ -464,14 +464,14 @@ export default function Questionnaire({ onBack }: QuestionnaireProps) {
             </div>
 
             {/* SECTION 2: Project Type Grid */}
-            <div className="glass-card p-6 md:p-8 rounded-sm space-y-6 relative border-white/5" id="field-block-project_type">
-              <div className="absolute top-0 left-8 -translate-y-1/2 bg-black px-4 py-1 text-brand font-mono text-[9px] uppercase tracking-widest border border-white/5">
+            <div className="bg-[#131B2E] border border-[#38BDF8]/15 p-6 md:p-8 rounded-sm space-y-6 relative" id="field-block-project_type">
+              <div className="absolute top-0 left-8 -translate-y-1/2 bg-[#0A0E17] px-4 py-1 text-brand font-mono text-[9px] uppercase tracking-widest border border-[#38BDF8]/20">
                 [02] Type Selection
               </div>
 
               <div className="pt-2 space-y-4">
                 <div className="flex justify-between items-center h-4">
-                  <label className="font-mono text-[10px] uppercase tracking-widest text-white/40">Select Project Framework</label>
+                  <label className="font-mono text-[10px] uppercase tracking-widest text-[#94A3B8]">Select Project Framework</label>
                   {touched.project_type && errors.project_type && (
                     <span className="font-mono text-[9px] uppercase tracking-wider text-red-500">{errors.project_type}</span>
                   )}
@@ -495,18 +495,18 @@ export default function Questionnaire({ onBack }: QuestionnaireProps) {
                         onClick={() => handleSelectProjectType(type.label)}
                         className={`text-left p-5 transition-all duration-300 relative rounded-sm flex items-start gap-4 border group/card ${
                           isSelected 
-                            ? 'bg-brand/10 border-brand shadow-[0_0_15px_rgba(234,88,12,0.051)]' 
-                            : 'bg-white/[0.01] border-white/5 hover:bg-white/[0.025] hover:border-brand/30 hover:scale-[1.01]'
+                            ? 'bg-brand/15 border-brand shadow-[0_0_15px_rgba(0,230,165,0.15)]' 
+                            : 'bg-[#0A0E17] border-[#38BDF8]/15 hover:border-brand/40 hover:scale-[1.01]'
                         }`}
                       >
-                        <div className={`p-2 rounded-sm transition-colors ${isSelected ? 'bg-brand text-black' : 'bg-white/5 group-hover/card:bg-brand/10'}`}>
+                        <div className={`p-2 rounded-sm transition-colors ${isSelected ? 'bg-brand text-[#0A0E17]' : 'bg-[#131B2E] group-hover/card:bg-brand/10 text-brand'}`}>
                           {type.icon}
                         </div>
                         <div className="space-y-1.5 flex-1">
                           <h4 className="font-display text-sm font-semibold uppercase tracking-wider text-white">
                             {type.label}
                           </h4>
-                          <p className="text-[11px] text-white/40 leading-relaxed font-sans font-light">
+                          <p className="text-[11px] text-[#94A3B8] leading-relaxed font-sans font-light">
                             {type.desc}
                           </p>
                         </div>
@@ -518,8 +518,8 @@ export default function Questionnaire({ onBack }: QuestionnaireProps) {
                         
                         {/* Little corner bracket */}
                         <div className={`absolute bottom-0 right-0 w-4 h-4 pointer-events-none transition-opacity ${isSelected ? 'opacity-100' : 'opacity-0'}`}>
-                          <div className="absolute bottom-1 right-1 w-2 h-[1px] bg-brand/40" />
-                          <div className="absolute bottom-1 right-1 h-2 w-[1px] bg-brand/40" />
+                          <div className="absolute bottom-1 right-1 w-2 h-[1px] bg-brand" />
+                          <div className="absolute bottom-1 right-1 h-2 w-[1px] bg-brand" />
                         </div>
                       </button>
                     );
@@ -529,14 +529,14 @@ export default function Questionnaire({ onBack }: QuestionnaireProps) {
             </div>
 
             {/* SECTION 3: Budget Scope */}
-            <div className="glass-card p-6 md:p-8 rounded-sm space-y-6 relative border-white/5" id="field-block-budget">
-              <div className="absolute top-0 left-8 -translate-y-1/2 bg-black px-4 py-1 text-brand font-mono text-[9px] uppercase tracking-widest border border-white/5">
+            <div className="bg-[#131B2E] border border-[#38BDF8]/15 p-6 md:p-8 rounded-sm space-y-6 relative" id="field-block-budget">
+              <div className="absolute top-0 left-8 -translate-y-1/2 bg-[#0A0E17] px-4 py-1 text-brand font-mono text-[9px] uppercase tracking-widest border border-[#38BDF8]/20">
                 [03] Budget Scope
               </div>
 
               <div className="pt-2 space-y-4">
                 <div className="flex justify-between items-center h-4">
-                  <label className="font-mono text-[10px] uppercase tracking-widest text-white/40">Select Estimated Budget</label>
+                  <label className="font-mono text-[10px] uppercase tracking-widest text-[#94A3B8]">Select Estimated Budget</label>
                   {touched.budget && errors.budget && (
                     <span className="font-mono text-[9px] uppercase tracking-wider text-red-500">{errors.budget}</span>
                   )}
@@ -560,8 +560,8 @@ export default function Questionnaire({ onBack }: QuestionnaireProps) {
                         onClick={() => handleSelectBudget(opt.value)}
                         className={`p-5 text-center rounded-sm font-mono text-xs uppercase transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] border relative cursor-pointer active:scale-95 ${
                           isSelected 
-                            ? 'bg-brand text-black border-brand font-bold shadow-[0_0_20px_rgba(234,88,12,0.15)]' 
-                            : 'bg-white/[0.01] border-white/5 text-white/50 hover:text-white hover:bg-white/[0.03] hover:border-white/10 hover:scale-[1.02] shadow-[inset_0_1px_1px_rgba(255,255,255,0.01)]'
+                            ? 'bg-brand text-[#0A0E17] border-brand font-bold shadow-[0_0_20px_rgba(0,230,165,0.25)]' 
+                            : 'bg-[#0A0E17] border-[#38BDF8]/15 text-[#94A3B8] hover:text-white hover:border-[#38BDF8]/40 hover:scale-[1.02]'
                         }`}
                       >
                         {opt.value}
@@ -569,8 +569,8 @@ export default function Questionnaire({ onBack }: QuestionnaireProps) {
                         {/* Creative mini corner bracket for design honesty */}
                         {isSelected && (
                           <div className="absolute bottom-0 right-0 w-3 h-3 pointer-events-none">
-                            <div className="absolute bottom-1 right-1 w-1.5 h-[1px] bg-black" />
-                            <div className="absolute bottom-1 right-1 h-1.5 w-[1px] bg-black" />
+                            <div className="absolute bottom-1 right-1 w-1.5 h-[1px] bg-[#0A0E17]" />
+                            <div className="absolute bottom-1 right-1 h-1.5 w-[1px] bg-[#0A0E17]" />
                           </div>
                         )}
                       </button>
@@ -581,13 +581,13 @@ export default function Questionnaire({ onBack }: QuestionnaireProps) {
             </div>
 
             {/* SECTION 4: Interactive Feature Tags */}
-            <div className="glass-card p-6 md:p-8 rounded-sm space-y-6 relative border-white/5">
-              <div className="absolute top-0 left-8 -translate-y-1/2 bg-black px-4 py-1 text-brand font-mono text-[9px] uppercase tracking-widest border border-white/5">
+            <div className="bg-[#131B2E] border border-[#38BDF8]/15 p-6 md:p-8 rounded-sm space-y-6 relative">
+              <div className="absolute top-0 left-8 -translate-y-1/2 bg-[#0A0E17] px-4 py-1 text-brand font-mono text-[9px] uppercase tracking-widest border border-[#38BDF8]/20">
                 [04] Features Needed
               </div>
 
               <div className="pt-2 space-y-4">
-                <label className="font-mono text-[10px] uppercase tracking-widest text-white/40 block">Select core feature specifications <span className="text-white/20 font-light">(Multiple allowed)</span></label>
+                <label className="font-mono text-[10px] uppercase tracking-widest text-[#94A3B8] block">Select core feature specifications <span className="text-[#94A3B8]/50 font-light">(Multiple allowed)</span></label>
                 
                 {/* Hidden features checklist payload info */}
                 <input 
@@ -607,8 +607,8 @@ export default function Questionnaire({ onBack }: QuestionnaireProps) {
                         onClick={() => handleToggleFeature(tag)}
                         className={`px-4 py-2.5 rounded-sm font-sans text-[11px] tracking-wide transition-all duration-300 border flex items-center gap-2 ${
                           isSelected 
-                            ? 'bg-brand/10 border-brand text-white font-medium' 
-                            : 'bg-white/[0.015] border-white/5 hover:border-white/10 text-white/50 hover:text-white/85'
+                            ? 'bg-brand/15 border-brand text-white font-medium shadow-[0_0_10px_rgba(0,230,165,0.15)]' 
+                            : 'bg-[#0A0E17] border-[#38BDF8]/15 hover:border-brand/40 text-[#94A3B8] hover:text-white'
                         }`}
                       >
                         {isSelected && <Check className="w-3 h-3 text-brand" />}
@@ -621,14 +621,14 @@ export default function Questionnaire({ onBack }: QuestionnaireProps) {
             </div>
 
             {/* SECTION 5: Description details */}
-            <div className="glass-card p-6 md:p-8 rounded-sm space-y-6 relative border-white/5" id="field-block-description">
-              <div className="absolute top-0 left-8 -translate-y-1/2 bg-black px-4 py-1 text-brand font-mono text-[9px] uppercase tracking-widest border border-white/5">
+            <div className="bg-[#131B2E] border border-[#38BDF8]/15 p-6 md:p-8 rounded-sm space-y-6 relative" id="field-block-description">
+              <div className="absolute top-0 left-8 -translate-y-1/2 bg-[#0A0E17] px-4 py-1 text-brand font-mono text-[9px] uppercase tracking-widest border border-[#38BDF8]/20">
                 [05] Description
               </div>
 
               <div className="pt-2 space-y-2">
                 <div className="flex justify-between items-center h-4">
-                  <label className="font-mono text-[10px] uppercase tracking-widest text-white/40">Project Outline & Target Goals</label>
+                  <label className="font-mono text-[10px] uppercase tracking-widest text-[#94A3B8]">Project Outline & Target Goals</label>
                   {touched.description && errors.description && (
                     <span className="font-mono text-[9px] uppercase tracking-wider text-red-500">{errors.description}</span>
                   )}
@@ -646,7 +646,7 @@ export default function Questionnaire({ onBack }: QuestionnaireProps) {
                   className={`${getInputClassName(!!errors.description, touched.description)} resize-none`}
                 />
                 
-                <div className="flex justify-between items-center font-mono text-[8px] tracking-wider text-white/30 pt-1">
+                <div className="flex justify-between items-center font-mono text-[8px] tracking-wider text-[#94A3B8]/60 pt-1">
                   <span>SPECS COUNT: {formData.description.trim().length} CHR</span>
                   <span>MIN REQ: 20 CHR</span>
                 </div>
@@ -663,14 +663,14 @@ export default function Questionnaire({ onBack }: QuestionnaireProps) {
 
             {/* Form Actions CTA */}
             <div className="flex flex-col sm:flex-row items-center gap-6 justify-between pt-4" id="questionnaire-cta-block">
-              <p className="text-[10px] font-mono text-white/30 uppercase tracking-widest text-center sm:text-left">
-                Security: responses are channeled to <span className="text-white/60">faadilnurudeen6@gmail.com</span> via Formspree.
+              <p className="text-[10px] font-mono text-[#94A3B8] uppercase tracking-widest text-center sm:text-left">
+                Security: responses are channeled to <span className="text-white">faadilnurudeen6@gmail.com</span> via Formspree.
               </p>
 
               <button
                 type="submit"
                 disabled={submission.submitting}
-                className="w-full sm:w-auto flex items-center justify-center gap-3 bg-brand text-black px-12 py-4 rounded-sm font-display text-xs uppercase tracking-[0.3em] font-bold hover:bg-brand-light transition-all duration-300 shadow-md group disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full sm:w-auto flex items-center justify-center gap-3 bg-brand text-[#0A0E17] px-12 py-4 rounded-sm font-display text-xs uppercase tracking-[0.3em] font-bold hover:bg-brand-light transition-all duration-300 shadow-md group disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-[0_0_20px_rgba(0,230,165,0.4)]"
               >
                 {submission.submitting ? 'Verifying Layouts...' : 'Submit Project Request'}
                 {!submission.submitting && <Send className="w-3.5 h-3.5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />}

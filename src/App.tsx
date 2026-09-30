@@ -33,7 +33,7 @@ export default function App() {
   }, [showLogin, showQuestionnaire]);
 
   return (
-    <main className="relative min-h-screen bg-black">
+    <main className="relative min-h-screen bg-[#0A0E17] text-white">
       <AnimatePresence mode="wait">
         {showLogin ? (
           <LoginPage key="login" onBack={() => setShowLogin(false)} />
@@ -49,10 +49,10 @@ export default function App() {
             <Pricing />
             <ContactFooter />
             
-            {/* Scroll indicator or other background decorations could go here */}
-            <div className="fixed bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 z-40 pointer-events-none opacity-20">
-              <div className="w-[1px] h-12 bg-white" />
-              <span className="text-[10px] uppercase tracking-[0.5em] font-light">{user ? `Authenticated: ${user.email}` : 'Scroll'}</span>
+            {/* Scroll indicator with ice blue accent and slate text */}
+            <div className="fixed bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 z-40 pointer-events-none opacity-40">
+              <div className="w-[1px] h-12 bg-gradient-to-b from-[#38BDF8]/60 to-transparent" />
+              <span className="text-[10px] uppercase tracking-[0.5em] font-light text-[#94A3B8]">{user ? `Authenticated: ${user.email}` : 'Scroll'}</span>
             </div>
           </div>
         )}
