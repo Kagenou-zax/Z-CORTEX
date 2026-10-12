@@ -4,16 +4,16 @@
  */
 
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion } from 'motion/react';
 import { Cpu, Gauge, Globe, Layers, Settings, Zap } from 'lucide-react';
 import techAbstractImg from '../assets/images/technical_abstract_dark_1779108165415.png';
 
 const steps = [
-  { id: 'craftsmanship', label: 'Craftsmanship', title: 'The Art of Code', desc: 'Meticulous attention to detail in every line of code, ensuring performance and elegance coexist.' },
-  { id: 'architecture', label: 'Architecture', title: 'System Design', desc: 'Building scalable infrastructures that stand the test of time and high-traffic demands.' },
-  { id: 'technology', label: 'Technology', title: 'Modern Stack', desc: 'Leveraging the latest frameworks and tools to deliver cutting-edge digital experiences.' },
-  { id: 'protection', label: 'Protection', title: 'Security First', desc: 'Implementing robust security protocols and best practices to safeguard user data.' },
-  { id: 'performance', label: 'Performance', title: 'Luxury Speed', desc: 'Optimization as a core principle, delivering sub-second response times and fluid interactions.' },
+  { id: 'craftsmanship', label: 'Craftsmanship', title: 'The Art of Code', desc: 'Meticulous attention to detail in every line of code, ensuring performance and elegance coexist seamlessly.' },
+  { id: 'architecture', label: 'Architecture', title: 'System Design', desc: 'Building scalable infrastructures that stand the test of time, high-traffic loads, and continuous delivery.' },
+  { id: 'technology', label: 'Technology', title: 'Modern Stack', desc: 'Leveraging modern frameworks, type-safe runtimes, and reactive pipelines to deliver cutting-edge digital experiences.' },
+  { id: 'protection', label: 'Protection', title: 'Security First', desc: 'Implementing robust security protocols, rate bounds, and token encryption standards to safeguard user systems.' },
+  { id: 'performance', label: 'Performance', title: 'Luxury Speed', desc: 'Optimization as a core principle, delivering sub-second response times, fluid 60fps animations, and perfect scores.' },
 ];
 
 const stats = [
@@ -28,42 +28,42 @@ export default function Process() {
   const [activeStep, setActiveStep] = useState(steps[0]);
 
   return (
-    <section className="relative bg-[#0A0E17] py-32 overflow-hidden border-t border-[#38BDF8]/10" id="about">
+    <section className="relative bg-white py-32 overflow-hidden border-t border-slate-200/80" id="about">
       <div className="max-w-7xl mx-auto px-8">
         
         {/* Top Header Information */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-8">
            <div className="space-y-2">
              <div className="flex items-center gap-2 mb-4">
-                <div className="w-2 h-2 rounded-full bg-brand animate-pulse shadow-[0_0_8px_rgba(0,230,165,0.8)]" />
-                <span className="font-mono text-[10px] uppercase tracking-[0.4em] text-[#94A3B8]">The Methodology</span>
+                <div className="w-2 h-2 rounded-full bg-blue-600 animate-pulse shadow-[0_0_8px_rgba(37,99,235,0.6)]" />
+                <span className="font-mono text-[10px] uppercase tracking-[0.4em] text-slate-500 font-semibold">The Methodology</span>
              </div>
-             <h2 className="font-display text-4xl uppercase tracking-tight font-medium text-white">
+             <h2 className="font-display text-4xl sm:text-5xl uppercase tracking-tight font-bold text-slate-900">
                Excellence Without <br />
-               <span className="text-[#38BDF8]/30">Compromise</span>
+               <span className="text-slate-400">Compromise</span>
              </h2>
            </div>
            
-           <div className="flex items-center gap-4 text-[#94A3B8] font-mono text-[9px] uppercase tracking-widest border-b border-[#38BDF8]/20 pb-2">
+           <div className="flex items-center gap-4 text-slate-500 font-mono text-[9px] uppercase tracking-widest border-b border-slate-200 pb-2">
              <span>Noirbyte Series II</span>
-             <span className="w-8 h-[1px] bg-[#38BDF8]/30" />
+             <span className="w-8 h-[1px] bg-slate-300" />
              <span>Est. 2024</span>
            </div>
         </div>
 
-        {/* Main Display Grid - Based on RR Layout */}
-        <div className="grid grid-cols-12 gap-8 lg:gap-12 min-h-[60vh]">
+        {/* Main Display Grid */}
+        <div className="grid grid-cols-12 gap-8 lg:gap-12 min-h-[500px]">
           
-          {/* Left Navigation (Sidebar) */}
-          <div className="col-span-12 md:col-span-3 lg:col-span-2 flex flex-col gap-3">
+          {/* Left Navigation */}
+          <div className="col-span-12 md:col-span-4 lg:col-span-3 flex flex-col gap-2.5">
              {steps.map((step) => (
                <button
                  key={step.id}
                  onClick={() => setActiveStep(step)}
-                 className={`w-full text-left px-6 py-3 rounded-sm transition-all duration-300 font-display text-[11px] uppercase tracking-widest border ${
+                 className={`w-full text-left px-5 py-3.5 rounded-xl sm:rounded-2xl transition-all duration-300 font-display text-xs uppercase tracking-wider border cursor-pointer ${
                    activeStep.id === step.id 
-                     ? 'bg-brand text-[#0A0E17] font-bold border-brand shadow-[0_0_20px_rgba(0,230,165,0.3)]' 
-                     : 'bg-[#131B2E] text-[#94A3B8] border-[#38BDF8]/15 hover:border-brand/40 hover:text-white'
+                     ? 'bg-blue-600 text-white font-bold border-blue-600 shadow-[0_6px_20px_rgba(37,99,235,0.25)]' 
+                     : 'bg-slate-50 text-slate-600 border-slate-200 hover:border-blue-300 hover:text-slate-900 hover:bg-white'
                  }`}
                >
                  {step.label}
@@ -72,74 +72,34 @@ export default function Process() {
           </div>
 
           {/* Central Display Area */}
-          <div className="col-span-12 md:col-span-9 lg:col-span-10 relative group">
-             <div className="absolute inset-0 bg-[#131B2E] border border-[#38BDF8]/20 overflow-hidden rounded-sm shadow-xl">
-                
-                {/* Background Typography */}
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none opacity-5 text-[#38BDF8]">
-                   <h3 className="font-display text-[25vw] font-bold uppercase tracking-tighter">
-                     {activeStep.label}
-                   </h3>
+          <div className="col-span-12 md:col-span-8 lg:col-span-9 relative">
+             <div className="h-full bg-slate-50 border border-slate-200/90 overflow-hidden rounded-2xl sm:rounded-3xl p-8 sm:p-12 shadow-sm flex flex-col justify-between">
+                <div>
+                  <span className="text-xs font-mono font-semibold text-blue-600 uppercase tracking-widest">
+                    Phase // {activeStep.id}
+                  </span>
+                  <h3 className="font-display text-3xl sm:text-4xl font-bold text-slate-900 mt-2 mb-4">
+                    {activeStep.title}
+                  </h3>
+                  <p className="text-slate-600 text-base leading-relaxed max-w-2xl font-sans">
+                    {activeStep.desc}
+                  </p>
                 </div>
 
-                {/* The "Main Asset" - Using generated image or abstract */}
-                <motion.div 
-                  key={activeStep.id}
-                  initial={{ opacity: 0, scale: 1.05 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-                  className="absolute inset-0 flex items-center justify-center p-12 lg:p-24"
-                >
-                   <div className="relative w-full max-w-2xl aspect-[16/9] lg:aspect-square flex items-center justify-center">
-                      <img 
-                        src={techAbstractImg} 
-                        alt="Process Visualization" 
-                        className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 transition-all duration-1000"
-                        referrerPolicy="no-referrer"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#131B2E] via-transparent to-transparent opacity-80" />
-                   </div>
-                </motion.div>
-
-                {/* Informational Overlays */}
-                <div className="absolute top-10 left-10 space-y-2 max-w-sm z-20">
-                   <motion.div 
-                     key={activeStep.id + '-text'}
-                     initial={{ opacity: 0, x: -20 }}
-                     animate={{ opacity: 1, x: 0 }}
-                     className="space-y-4"
-                   >
-                      <h4 className="font-display text-4xl uppercase font-bold tracking-tight text-white">
-                        {activeStep.title}
-                      </h4>
-                      <p className="text-[#94A3B8] text-xs leading-relaxed">
-                        {activeStep.desc}
-                      </p>
-                   </motion.div>
-                </div>
-
-                {/* Corner Decoration */}
-                <div className="absolute top-4 right-4 text-brand">
-                   <Globe className="w-5 h-5 animate-spin-slow opacity-80" />
+                {/* Technical Specifications bar */}
+                <div className="mt-12 pt-8 border-t border-slate-200 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+                  {stats.map((stat, i) => (
+                    <div key={i} className="space-y-1">
+                      <div className="flex items-center gap-1.5 text-blue-600">
+                        {stat.icon}
+                        <span className="text-[10px] uppercase font-mono tracking-wider font-semibold">{stat.label}</span>
+                      </div>
+                      <p className="text-xs font-medium text-slate-800 truncate">{stat.value}</p>
+                    </div>
+                  ))}
                 </div>
              </div>
           </div>
-        </div>
-
-        {/* Bottom Specs Bar - Replicating the RR Spec Cards */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-px bg-[#38BDF8]/10 border border-[#38BDF8]/15 mt-12 rounded-sm overflow-hidden">
-          {stats.map((stat, idx) => (
-            <div key={idx} className="bg-[#131B2E] p-8 space-y-4 border-r border-[#38BDF8]/10 last:border-r-0">
-               <div className="flex items-center justify-between">
-                 <span className="font-display font-medium text-[11px] uppercase tracking-widest text-white/90">{stat.label}</span>
-                 <div className="text-brand">{stat.icon}</div>
-               </div>
-               <div className="space-y-1">
-                 <p className="text-[13px] font-mono text-[#94A3B8]">{stat.value}</p>
-                 <div className="w-full h-[1px] bg-gradient-to-r from-brand to-transparent" />
-               </div>
-            </div>
-          ))}
         </div>
       </div>
     </section>

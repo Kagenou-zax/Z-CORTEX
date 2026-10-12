@@ -32,22 +32,22 @@ const articles = [
 
 export default function Blog() {
   return (
-    <section className="relative bg-[#0A0E17] py-32 border-t border-[#38BDF8]/10" id="blog">
+    <section className="relative bg-slate-50/70 py-32 border-t border-slate-200/80" id="blog">
       <div className="max-w-7xl mx-auto px-8">
         
         {/* Header */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-20 gap-8">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-8">
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <BookOpenText className="w-4 h-4 text-brand" />
-              <span className="font-mono text-[10px] uppercase tracking-[0.4em] text-[#94A3B8]">Knowledge Base</span>
+              <BookOpenText className="w-4 h-4 text-blue-600" />
+              <span className="font-mono text-[10px] uppercase tracking-[0.4em] text-slate-500 font-semibold">Knowledge Base</span>
             </div>
-            <h2 className="font-display text-5xl md:text-7xl uppercase tracking-tighter leading-none font-medium text-white">
+            <h2 className="font-display text-5xl md:text-7xl uppercase tracking-tighter leading-none font-bold text-slate-900">
               Journal & <br />
-              <span className="text-[#38BDF8]/30">Insights</span>
+              <span className="text-slate-400">Insights</span>
             </h2>
           </div>
-          <button className="font-display text-[11px] uppercase tracking-[0.3em] font-medium border-b border-brand pb-1 text-white hover:text-brand transition-colors">
+          <button className="font-display text-[11px] uppercase tracking-[0.3em] font-semibold border-b-2 border-blue-600 pb-1 text-slate-800 hover:text-blue-600 transition-colors cursor-pointer">
             View All Articles
           </button>
         </div>
@@ -63,31 +63,28 @@ export default function Blog() {
               whileHover={{ scale: 1.02, y: -4 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="bg-[#131B2E] p-10 group cursor-pointer border border-[#38BDF8]/15 hover:border-brand/50 hover:shadow-[0_20px_40px_rgba(0,0,0,0.5)] transition-all duration-500 flex flex-col justify-between min-h-[400px] z-10 no-underline text-white block rounded-sm"
+              className="bg-white p-8 sm:p-10 group cursor-pointer border border-slate-200 hover:border-blue-500 hover:shadow-[0_20px_40px_rgba(37,99,235,0.08)] transition-all duration-500 flex flex-col justify-between min-h-[380px] z-10 no-underline text-slate-900 block rounded-2xl sm:rounded-3xl shadow-sm"
               id={`blog-card-${idx}`}
             >
               <div className="space-y-6">
                 <div className="space-y-4">
                   <div className="flex items-center gap-4 text-[10px] font-mono uppercase tracking-widest">
-                    <span className="text-brand font-bold">{article.category}</span>
-                    <span className="text-[#94A3B8]/60">{article.date}</span>
+                    <span className="text-blue-600 font-bold">{article.category}</span>
+                    <span className="text-slate-400">{article.date}</span>
                   </div>
                   
-                  <h3 className="relative font-display text-2xl uppercase font-medium leading-tight tracking-tight text-white group-hover:text-brand transition-colors duration-300 w-fit">
+                  <h3 className="relative font-display text-2xl font-bold leading-tight tracking-tight text-slate-900 group-hover:text-blue-600 transition-colors duration-300 w-fit">
                     {article.title}
-                    <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-brand transition-all duration-500 group-hover:w-full" />
                   </h3>
-                  <p className="text-[#94A3B8] text-[13px] leading-relaxed">
+                  <p className="text-slate-600 text-sm leading-relaxed font-sans">
                     {article.excerpt}
                   </p>
                 </div>
               </div>
 
-              <div className="pt-8 flex items-center justify-between border-t border-[#38BDF8]/15">
-                <span className="text-[10px] uppercase tracking-[0.3em] font-mono text-[#94A3B8] group-hover:text-white transition-colors">Read More</span>
-                <div className="w-8 h-8 rounded-full border border-[#38BDF8]/30 flex items-center justify-center group-hover:bg-brand group-hover:border-brand transition-all">
-                  <ArrowRight className="w-4 h-4 text-white group-hover:text-[#0A0E17] transition-colors" />
-                </div>
+              <div className="pt-6 border-t border-slate-100 flex items-center justify-between text-xs font-mono font-semibold text-slate-700 group-hover:text-blue-600">
+                <span>Read Full Analysis</span>
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1 text-blue-600" />
               </div>
             </motion.a>
           ))}

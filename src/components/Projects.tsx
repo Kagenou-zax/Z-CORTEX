@@ -5,53 +5,113 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { ArrowUpRight, Code, ExternalLink, ShieldCheck, Github } from 'lucide-react';
+import { ArrowUpRight, ExternalLink, Github, Sparkles, ShoppingBag, Utensils, Laptop, Layers, ShieldCheck, Terminal } from 'lucide-react';
 
-const projects = [
+interface Project {
+  id: string;
+  title: string;
+  subtitle?: string;
+  category: string;
+  year: string;
+  description: string;
+  fullDescription: string;
+  tags: string[];
+  extendedTags: string[];
+  demoUrl: string;
+  repoUrl?: string;
+  image: string;
+  badge?: string;
+  highlights?: string[];
+}
+
+const projects: Project[] = [
   {
     id: '01',
-    title: 'Aether Core',
-    category: 'SaaS Platform',
+    title: 'Sole Crafts Creation',
+    subtitle: 'Handmade Footwear & E-Commerce Platform',
+    category: 'E-Commerce / Retail',
     year: '2024',
-    description: 'A high-performance monitoring dashboard for decentralized cloud networks. Built with real-time data streaming and advanced visualization.',
-    fullDescription: 'Aether Core is an enterprise-grade telemetry and network analytics suite built on a high-throughput reactive queue engine. Capable of handling over 100k events/sec down to safe millisecond bounds, it streams diagnostic records, resource allocations, and node heatmaps directly into custom canvas visualizers with pristine clarity.',
-    tags: ['Next.js', 'WebSockets', 'D3.js'],
-    extendedTags: ['React Query', 'TailwindCSS', 'Redis', 'Node.js', 'Docker', 'Chart.js'],
-    demoUrl: 'https://accounts.google.com', // Realistic standard navigation placeholder
+    badge: 'Live Client Work',
+    description: 'An artisanal e-commerce storefront for bespoke handcrafted leather slides, sandals, and custom footwear with direct WhatsApp checkout integration.',
+    fullDescription: 'Sole Crafts Creation is a bespoke digital storefront built for a craft footwear studio. It showcases hand-stitched leather slides and sandals with high-fidelity product galleries, custom tone/size selectors (EU 38–46), real-time order bag compilation, and seamless WhatsApp direct-to-artisan checkout workflows.',
+    tags: ['E-Commerce', 'React', 'Tailwind CSS', 'WhatsApp API'],
+    extendedTags: ['Bespoke Cart Builder', 'Mobile-First UX', 'Netlify Edge', 'Vite', 'Lucide Icons', 'Conversion Optimized'],
+    demoUrl: 'https://solecrafts.netlify.app/',
     repoUrl: 'https://github.com/login',
-    image: 'https://images.unsplash.com/photo-1614850523296-d8c1af93d400?auto=format&fit=crop&q=80&w=1200',
+    image: 'https://solecrafts.netlify.app/authentic-white-buckle-slides.jpg?v=2',
+    highlights: ['Artisanal Custom Builder', 'Zero-friction WhatsApp Checkout', '99+ PageSpeed Mobile Score'],
   },
   {
     id: '02',
+    title: 'Mhunis Delicacies',
+    subtitle: 'Authentic African Culinary & Online Ordering',
+    category: 'Restaurant / Food',
+    year: '2024',
+    badge: 'Live Client Work',
+    description: 'A culinary web application and interactive ordering menu for Abeokuta’s celebrated African kitchen, featuring signature smoky Jollof rice and catering services.',
+    fullDescription: 'Mhunis Delicacies delivers an immersive, mouth-watering dining and catering platform. Built for high conversion, it features category-filtered menus (Party Jollof Rice, Spicy Jollof Spaghetti, Yam & Egg Sauce, Pastries), instant meal customization, catering quote calculators for university milestones, and automated WhatsApp order dispatch.',
+    tags: ['Restaurant Web App', 'React', 'Tailwind CSS', 'WhatsApp Order Flow'],
+    extendedTags: ['Interactive Menu', 'Catering Request Engine', 'Live Cart Calculator', 'Local SEO & OpenGraph', 'Ultra-fast CDN'],
+    demoUrl: 'https://mhunisdelicacies.netlify.app/',
+    repoUrl: 'https://github.com/login',
+    image: 'https://mhunisdelicacies.netlify.app/images/mhunis_hero_jollof_deluxe_1790881442538.jpg',
+    highlights: ['Interactive Menu System', 'Instant WhatsApp Cart Generation', 'Event Catering Calculator'],
+  },
+  {
+    id: '03',
+    title: 'Aether Core',
+    subtitle: 'Decentralized Telemetry & Cloud Analytics',
+    category: 'SaaS Platform',
+    year: '2024',
+    badge: 'Internal Product',
+    description: 'A high-performance monitoring dashboard for decentralized cloud networks. Built with real-time data streaming and advanced canvas visualizations.',
+    fullDescription: 'Aether Core is an enterprise-grade telemetry and network analytics suite built on a high-throughput reactive queue engine. Capable of handling over 100k events/sec down to safe millisecond bounds, it streams diagnostic records, resource allocations, and node heatmaps directly into custom visualizers with pristine clarity.',
+    tags: ['Next.js', 'WebSockets', 'D3.js'],
+    extendedTags: ['React Query', 'TailwindCSS', 'Redis', 'Node.js', 'Docker', 'Chart.js'],
+    demoUrl: 'https://accounts.google.com',
+    repoUrl: 'https://github.com/login',
+    image: 'https://images.unsplash.com/photo-1614850523296-d8c1af93d400?auto=format&fit=crop&q=80&w=1200',
+    highlights: ['100k events/sec engine', 'Low-latency canvas graphs', 'Multi-tenant auth'],
+  },
+  {
+    id: '04',
     title: 'Nexus OS',
+    subtitle: 'Enterprise Multi-Brand Design System',
     category: 'Design System',
     year: '2024',
+    badge: 'Open Source',
     description: 'A comprehensive, multi-brand design system designed for consistency across 15+ micro-services and 3 distinct user ecosystems.',
     fullDescription: 'Nexus OS delivers cross-platform schema generation, unified color tokens, and accessible, keyboard-compliant navigation primitives. Designed to bridge the gaps across 15 high-compliance micro-services, it delivers standard-conforming atomic hooks alongside robust multi-platform component generators that accelerate engineering timelines.',
-    tags: ['Tailwind', 'React', 'Storybook'],
+    tags: ['Tailwind CSS', 'React', 'Storybook'],
     extendedTags: ['Radix UI', 'Framer Motion', 'Figma API', 'PostCSS', 'TypeScript'],
     demoUrl: 'https://accounts.google.com',
     repoUrl: 'https://github.com/login',
     image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1200',
+    highlights: ['Accessible primitives', 'Automated token export', 'Zero-CSS-runtime overhead'],
   },
   {
-    id: '03',
+    id: '05',
     title: 'Vanguard Sec',
+    subtitle: 'AI Smart Contract Vulnerability Auditing',
     category: 'Cybersecurity',
     year: '2023',
-    description: 'Security auditing tool that uses ML to predict potential vulnerability vectors in smart contract architectures.',
+    badge: 'Research Project',
+    description: 'Security auditing tool that uses machine learning to predict potential vulnerability vectors in smart contract architectures.',
     fullDescription: 'Vanguard Sec leverages Graph Neural Networks (GNNs) to map abstract syntax graphs derived from smart contract bytecode. It detects recursive reentrancy access vulnerabilities, overflow boundaries, and frontrunning vectors, generating standardized ledger auditing files for secure multi-sig validation.',
     tags: ['Python', 'Solidity', 'PyTorch'],
     extendedTags: ['Hardhat', 'Slither', 'Graphviz', 'FastAPI', 'Rust', 'Ethers.js'],
     demoUrl: 'https://accounts.google.com',
     repoUrl: 'https://github.com/login',
     image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=1200',
+    highlights: ['GNN AST parsing', 'Automated reentrancy checks', 'Audit report PDF export'],
   },
   {
-    id: '04',
+    id: '06',
     title: 'Prism Engine',
+    subtitle: 'WebGL 2.0 Architectural Rendering Core',
     category: 'Creative Tech',
     year: '2023',
+    badge: 'Graphics Lab',
     description: 'Custom 3D rendering engine for web-based architectural visualizations, utilizing WebGL 2.0 for realistic lighting.',
     fullDescription: 'Prism Engine implements forward-plus clustered lighting algorithms, custom shader-based global ambient occlusion (SSAO), and runtime asset optimization. Capable of loading high-density multi-polygon architectural meshes, it operates directly in standard browser viewports via progressive WASM decoders.',
     tags: ['Three.js', 'GLSL', 'WebGL'],
@@ -59,19 +119,31 @@ const projects = [
     demoUrl: 'https://accounts.google.com',
     repoUrl: 'https://github.com/login',
     image: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&q=80&w=1200',
+    highlights: ['Clustered light passes', 'Progressive mesh streaming', '60fps mobile WebGL'],
   },
+];
+
+const CATEGORIES = [
+  'ALL',
+  'Client Works',
+  'E-Commerce / Retail',
+  'Restaurant / Food',
+  'SaaS Platform',
+  'Design System',
+  'Cybersecurity',
+  'Creative Tech',
 ];
 
 export default function Projects() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(0); // Open the first project by default so visitors see live client proof immediately
   const [selectedCategory, setSelectedCategory] = useState<string>('ALL');
 
-  const filteredProjects = selectedCategory === 'ALL' 
-    ? projects 
+  const filteredProjects = selectedCategory === 'ALL'
+    ? projects
+    : selectedCategory === 'Client Works'
+    ? projects.filter(p => p.badge === 'Live Client Work')
     : projects.filter(p => p.category === selectedCategory);
-
-  const activeProject = filteredProjects[activeIndex] || filteredProjects[0] || projects[0];
 
   const handleProjectClick = (index: number) => {
     setExpandedIndex(expandedIndex === index ? null : index);
@@ -79,259 +151,234 @@ export default function Projects() {
   };
 
   return (
-    <section className="relative bg-[#0A0E17] py-32 overflow-hidden border-t border-[#38BDF8]/10" id="projects">
-      {/* Side Label (Sticky-like feel) */}
+    <section className="relative bg-slate-50/70 py-32 overflow-hidden border-t border-slate-200/80" id="projects">
+      {/* Side Label */}
       <div className="absolute left-[2%] top-[15%] hidden xl:flex flex-col items-center gap-6 z-10" id="projects-rail">
-         <span className="vertical-rl uppercase tracking-[0.5em] text-[10px] text-brand/80 font-medium">Selected Archives</span>
-         <div className="w-[1px] h-24 bg-gradient-to-b from-brand/40 to-transparent" />
+         <span className="vertical-rl uppercase tracking-[0.5em] text-[10px] text-blue-600 font-semibold">Selected Archives</span>
+         <div className="w-[1px] h-24 bg-gradient-to-b from-blue-600/40 to-transparent" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-8">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-12 mb-16" id="projects-header">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 sm:gap-12 mb-14" id="projects-header">
           <div className="space-y-4">
-            <h2 className="font-display text-5xl md:text-7xl uppercase tracking-tighter leading-none font-medium text-white">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-mono font-medium">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>Production Shipments & Live Works</span>
+            </div>
+            <h2 className="font-display text-4xl sm:text-6xl md:text-7xl uppercase tracking-tighter leading-none font-bold text-slate-900">
               Featured <br />
-              <span className="text-[#38BDF8]/30">Works</span>
+              <span className="text-slate-400">Works</span>
             </h2>
           </div>
-          <div className="flex items-center gap-8 border-l border-[#38BDF8]/20 pl-8 h-fit">
+          <div className="flex items-center gap-8 border-l border-slate-200 pl-8 h-fit">
             <div className="flex flex-col">
-              <span className="text-brand font-mono text-xl font-bold">{projects.length}</span>
-              <span className="text-[#94A3B8] text-[10px] uppercase tracking-widest">Total Case Studies</span>
+              <span className="text-blue-600 font-mono text-xl sm:text-2xl font-bold">{projects.length}</span>
+              <span className="text-slate-500 font-mono text-[9px] uppercase tracking-widest">Total Projects</span>
             </div>
-            <p className="text-[#94A3B8] text-xs max-w-[200px] leading-relaxed">
-              Carefully curated projects focusing on high-end performance and design precision.
-            </p>
+            <div className="flex flex-col">
+              <span className="text-emerald-600 font-mono text-xl sm:text-2xl font-bold">2 Live</span>
+              <span className="text-slate-500 font-mono text-[9px] uppercase tracking-widest">Client Deployments</span>
+            </div>
+            <div className="flex flex-col hidden sm:flex">
+              <span className="text-slate-900 font-mono text-xl sm:text-2xl font-bold">100%</span>
+              <span className="text-slate-500 font-mono text-[9px] uppercase tracking-widest">Production Ready</span>
+            </div>
           </div>
         </div>
 
-        {/* Category Filters */}
-        <div className="flex flex-wrap gap-2 pb-8 mb-12 border-b border-[#38BDF8]/10" id="projects-filter-bar">
-          {['ALL', 'SaaS Platform', 'Design System', 'Cybersecurity', 'Creative Tech'].map((category) => {
-            const isActive = selectedCategory === category;
-            return (
-              <button
-                key={category}
-                onClick={() => {
-                  setSelectedCategory(category);
-                  setActiveIndex(0);
-                  setExpandedIndex(null);
-                }}
-                className={`px-4 py-2 font-mono text-[9px] md:text-[10px] uppercase tracking-widest border transition-all duration-300 relative rounded-sm ${
-                  isActive 
-                    ? 'bg-brand/15 border-brand text-brand font-bold shadow-[0_0_15px_rgba(0,230,165,0.2)]' 
-                    : 'bg-[#131B2E] border-[#38BDF8]/15 text-[#94A3B8] hover:bg-[#1A243D] hover:text-white hover:border-[#38BDF8]/40'
-                }`}
-              >
-                {isActive && (
-                  <span className="absolute top-1 right-1 w-1 h-1 rounded-full bg-brand animate-pulse" />
-                )}
-                {category === 'ALL' ? 'Show All' : category}
-              </button>
-            );
-          })}
+        {/* Category Filter Pills */}
+        <div className="flex flex-wrap gap-2 sm:gap-2.5 mb-10 sm:mb-12">
+          {CATEGORIES.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => {
+                setSelectedCategory(cat);
+                setActiveIndex(0);
+                setExpandedIndex(0);
+              }}
+              className={`px-3.5 sm:px-4 py-1.5 rounded-full text-xs font-mono tracking-wide transition-all duration-300 border cursor-pointer ${
+                selectedCategory === cat
+                  ? 'bg-blue-600 text-white font-semibold border-blue-600 shadow-[0_4px_12px_rgba(37,99,235,0.25)]'
+                  : 'bg-white text-slate-600 border-slate-200 hover:border-blue-300 hover:text-slate-900'
+              }`}
+            >
+              {cat === 'Client Works' ? '★ Client Works' : cat}
+            </button>
+          ))}
         </div>
 
-        {/* Interactive Grid */}
-        <div className="grid grid-cols-12 gap-12">
-          {/* List Column */}
-          <div className="col-span-12 lg:col-span-5 space-y-2">
-            <AnimatePresence mode="popLayout" initial={false}>
-              {filteredProjects.map((project, index) => (
-                <motion.div
-                  layout
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.98 }}
-                  transition={{ duration: 0.35, ease: 'easeOut' }}
-                key={project.id}
-                onMouseEnter={() => setActiveIndex(index)}
-                onClick={() => handleProjectClick(index)}
-                className={`relative px-8 py-10 cursor-pointer transition-all duration-500 border border-transparent border-b-[#38BDF8]/10 group rounded-sm hover:-translate-y-0.5 hover:scale-[1.01] ${
-                  expandedIndex === index 
-                    ? 'bg-[#131B2E] border-[#38BDF8]/30 shadow-[0_20px_50px_rgba(0,0,0,0.6)]' 
-                    : activeIndex === index 
-                      ? 'bg-[#131B2E]/90 border-[#38BDF8]/20 shadow-[0_15px_40px_rgba(0,0,0,0.4)]' 
-                      : 'hover:bg-[#131B2E]/60 hover:border-[#38BDF8]/20 hover:shadow-[0_15px_35px_rgba(0,0,0,0.3)]'
-                }`}
-                id={`project-item-${project.id}`}
-              >
-                {/* Active/Expanded Indicator Line */}
-                <motion.div 
-                  initial={false}
-                  animate={{ 
-                    height: (activeIndex === index || expandedIndex === index) ? '100%' : '0%',
-                    opacity: (activeIndex === index || expandedIndex === index) ? 1 : 0
-                  }}
-                  className="absolute left-0 top-0 w-[2px] bg-brand shadow-[0_0_10px_rgba(0,230,165,0.8)]"
-                />
+        {/* Project List */}
+        <div className="grid grid-cols-1 gap-6">
+          {filteredProjects.map((project, index) => {
+            const isExpanded = expandedIndex === index;
+            const isClientWork = project.badge === 'Live Client Work';
 
-                <div className="flex items-start justify-between gap-4">
-                  <div className="space-y-1">
-                    <span className="font-mono text-[10px] text-brand uppercase tracking-widest block font-medium">
-                      {project.id} / {project.category}
+            return (
+              <motion.div
+                key={project.id}
+                layout
+                className={`bg-white border rounded-2xl sm:rounded-3xl p-6 sm:p-8 transition-all duration-300 ${
+                  isExpanded 
+                    ? isClientWork
+                      ? 'border-blue-600 shadow-[0_15px_40px_rgba(37,99,235,0.12)] ring-1 ring-blue-600/30'
+                      : 'border-blue-600 shadow-[0_15px_40px_rgba(37,99,235,0.08)]'
+                    : 'border-slate-200 hover:border-slate-300 shadow-xs'
+                }`}
+              >
+                <div 
+                  className="flex flex-col md:flex-row md:items-center justify-between gap-6 cursor-pointer"
+                  onClick={() => handleProjectClick(index)}
+                >
+                  <div className="flex items-start md:items-center gap-5 sm:gap-6">
+                    <span className="font-mono text-sm text-blue-600 font-bold bg-blue-50 w-9 h-9 rounded-xl flex items-center justify-center shrink-0 border border-blue-100">
+                      {project.id}
                     </span>
-                    <h3 className={`font-display text-2xl uppercase tracking-widest transition-colors duration-300 ${
-                      (activeIndex === index || expandedIndex === index) ? 'text-white' : 'text-[#94A3B8]'
-                    }`}>
-                      {project.title}
-                    </h3>
+                    <div>
+                      <div className="flex items-center gap-2.5 flex-wrap">
+                        <h3 className="font-display text-2xl sm:text-3xl font-bold text-slate-900 hover:text-blue-600 transition-colors">
+                          {project.title}
+                        </h3>
+                        {project.badge && (
+                          <span className={`text-[10px] font-mono uppercase tracking-wider font-semibold px-2.5 py-0.5 rounded-full border ${
+                            isClientWork 
+                              ? 'bg-emerald-50 text-emerald-700 border-emerald-200' 
+                              : 'bg-slate-100 text-slate-600 border-slate-200'
+                          }`}>
+                            {project.badge}
+                          </span>
+                        )}
+                      </div>
+                      <div className="flex items-center gap-3 mt-1.5 text-xs text-slate-500 font-sans">
+                        <span className="text-slate-700 font-medium">{project.category}</span>
+                        <span>·</span>
+                        <span>{project.year}</span>
+                        {project.subtitle && (
+                          <>
+                            <span className="hidden sm:inline">·</span>
+                            <span className="text-slate-500 hidden sm:inline">{project.subtitle}</span>
+                          </>
+                        )}
+                      </div>
+                    </div>
                   </div>
-                  <div className={`transition-all duration-500 transform ${
-                    (activeIndex === index || expandedIndex === index) ? 'rotate-95 text-brand' : 'rotate-45 text-[#94A3B8] group-hover:text-white'
-                  }`}>
-                    <ArrowUpRight className="w-5 h-5" />
+
+                  <div className="flex items-center justify-between md:justify-end gap-3 pt-2 md:pt-0 border-t md:border-t-0 border-slate-100">
+                    <div className="flex flex-wrap gap-2">
+                      {project.tags.slice(0, 3).map((tag) => (
+                        <span key={tag} className="text-[11px] font-mono text-slate-600 bg-slate-100 px-3 py-1 rounded-full border border-slate-200">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <button 
+                      type="button" 
+                      aria-label="Expand project details"
+                      className={`w-10 h-10 rounded-full border flex items-center justify-center transition-all shrink-0 ${
+                        isExpanded ? 'bg-blue-600 border-blue-600 text-white shadow-sm' : 'border-slate-200 text-slate-600 hover:border-blue-600 hover:text-blue-600'
+                      }`}
+                    >
+                      <ArrowUpRight className={`w-4 h-4 transition-transform duration-300 ${isExpanded ? 'rotate-90' : ''}`} />
+                    </button>
                   </div>
                 </div>
 
-                {/* Sub-text revealed on active / expanded */}
-                <AnimatePresence initial={false}>
-                  {(activeIndex === index || expandedIndex === index) && (
+                <AnimatePresence>
+                  {isExpanded && (
                     <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                       className="overflow-hidden"
                     >
-                      {expandedIndex !== index ? (
-                        <>
-                          <p className="pt-6 text-[#94A3B8] text-xs leading-relaxed max-w-[40ch]">
-                            {project.description}
+                      <div className="pt-8 mt-8 border-t border-slate-100 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                        <div className="lg:col-span-7 space-y-5">
+                          <p className="text-slate-700 leading-relaxed text-sm sm:text-base font-normal">
+                            {project.fullDescription}
                           </p>
-                          <div className="flex flex-wrap gap-x-4 gap-y-2 pt-6">
-                            {project.tags.map(tag => (
-                              <span key={tag} className="text-[10px] font-mono text-[#38BDF8]/60 uppercase tracking-widest">
-                                #{tag}
+
+                          {/* Highlights bullet points if present */}
+                          {project.highlights && project.highlights.length > 0 && (
+                            <div className="bg-slate-50 rounded-xl p-4 border border-slate-200 space-y-2">
+                              <span className="text-[11px] font-mono font-semibold uppercase tracking-wider text-slate-500 block">
+                                Key Engineering & Business Highlights
+                              </span>
+                              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-700">
+                                {project.highlights.map((h, hIdx) => (
+                                  <div key={hIdx} className="flex items-center gap-2">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-blue-600 shrink-0" />
+                                    <span>{h}</span>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+
+                          <div className="flex flex-wrap gap-2 pt-1">
+                            {project.extendedTags.map(tag => (
+                              <span key={tag} className="text-[11px] font-mono text-blue-700 bg-blue-50 px-3 py-1 rounded-full border border-blue-100">
+                                {tag}
                               </span>
                             ))}
                           </div>
-                          <p className="pt-4 text-brand font-mono text-[9px] uppercase tracking-[0.2em] flex items-center gap-1.5 opacity-80 group-hover:opacity-100 transition-opacity">
-                            <span>Click to expand specs</span>
-                            <span className="inline-block transition-transform group-hover:translate-x-1">→</span>
-                          </p>
-                        </>
-                      ) : (
-                        <div className="pt-6 space-y-6" onClick={(e) => e.stopPropagation()}>
-                          <div>
-                            <span className="font-mono text-[9px] uppercase tracking-widest text-brand block mb-2 font-bold">Detailed Spec-Sheet</span>
-                            <p className="text-[#94A3B8] text-xs leading-relaxed max-w-[45ch]">
-                              {project.fullDescription}
-                            </p>
-                          </div>
 
-                          <div>
-                            <span className="font-mono text-[9px] uppercase tracking-widest text-brand block mb-3 font-bold">System Technologies</span>
-                            <div className="flex flex-wrap gap-2 max-w-[40ch]">
-                              {project.extendedTags.map(tag => (
-                                <span 
-                                  key={tag} 
-                                  className="text-[9px] font-mono bg-[#0A0E17] border border-[#38BDF8]/20 px-2 py-1 rounded-sm text-[#94A3B8] hover:border-brand hover:text-white transition-colors"
-                                >
-                                  {tag}
-                                </span>
-                              ))}
-                            </div>
-                          </div>
-
-                          <div className="flex flex-wrap items-center gap-3 pt-2">
+                          <div className="flex flex-wrap items-center gap-4 pt-4">
                             <a 
-                              href={project.demoUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex items-center gap-2 bg-brand text-[#0A0E17] px-4 py-2.5 rounded-sm font-mono text-[10px] uppercase tracking-widest font-bold hover:bg-brand-light hover:shadow-lg hover:shadow-brand/20 transition-all"
+                              href={project.demoUrl} 
+                              target="_blank" 
+                              rel="noreferrer"
+                              className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold px-6 py-3 rounded-full transition-all shadow-[0_4px_14px_rgba(37,99,235,0.25)] hover:shadow-[0_6px_20px_rgba(37,99,235,0.35)] cursor-pointer"
                             >
+                              <span>Visit Live Site</span>
                               <ExternalLink className="w-3.5 h-3.5" />
-                              Live Demo
                             </a>
-                            <a 
-                              href={project.repoUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex items-center gap-2 bg-[#0A0E17] border border-[#38BDF8]/20 text-[#94A3B8] hover:text-white px-4 py-2.5 rounded-sm font-mono text-[10px] uppercase tracking-widest hover:border-brand transition-all"
-                            >
-                              <Code className="w-3.5 h-3.5 text-[#38BDF8]" />
-                              Repository
-                            </a>
+                            {project.repoUrl && (
+                              <a 
+                                href={project.repoUrl} 
+                                target="_blank" 
+                                rel="noreferrer"
+                                className="inline-flex items-center gap-2 bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold px-5 py-3 rounded-full transition-colors border border-slate-200 shadow-xs cursor-pointer"
+                              >
+                                <span>Source Code</span>
+                                <Github className="w-3.5 h-3.5" />
+                              </a>
+                            )}
                           </div>
-
-                          <button 
-                            type="button"
-                            onClick={() => handleProjectClick(index)}
-                            className="text-[#94A3B8] hover:text-brand font-mono text-[9px] uppercase tracking-[0.2em] flex items-center gap-1.5 cursor-pointer select-none transition-colors pt-2"
-                          >
-                            <span>Click to collapse specs</span>
-                            <span>↑</span>
-                          </button>
                         </div>
-                      )}
+
+                        <div className="lg:col-span-5 space-y-3">
+                          <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-sm bg-slate-100 relative group aspect-[16/10]">
+                            <img 
+                              src={project.image} 
+                              alt={project.title} 
+                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                              referrerPolicy="no-referrer"
+                              onError={(e) => {
+                                // Fallback image if remote url fails
+                                const target = e.target as HTMLImageElement;
+                                target.src = 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200';
+                              }}
+                            />
+                            {isClientWork && (
+                              <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full border border-slate-200/80 shadow-xs flex items-center gap-1.5 text-[10px] font-mono text-emerald-700 font-semibold">
+                                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                                <span>Deployed on Netlify</span>
+                              </div>
+                            )}
+                          </div>
+                          <div className="flex items-center justify-between text-[11px] text-slate-500 font-mono px-1">
+                            <span className="truncate max-w-[200px]">{project.demoUrl.replace(/^https?:\/\//, '')}</span>
+                            <span className="text-blue-600 font-medium">Verified Active</span>
+                          </div>
+                        </div>
+                      </div>
                     </motion.div>
                   )}
                 </AnimatePresence>
               </motion.div>
-            ))}
-            </AnimatePresence>
-          </div>
-
-          {/* Preview Image Column */}
-          <div className="col-span-12 lg:col-span-7 relative h-[60vh] lg:h-[70vh] sticky top-24" id="project-preview">
-            <div className="absolute inset-0 bg-[#131B2E] border border-[#38BDF8]/20 overflow-hidden rounded-sm shadow-2xl">
-               {/* Frame Corners in Cool Ice Blue */}
-               <div className="absolute top-0 left-0 w-8 h-8 border-l-2 border-t-2 border-[#38BDF8]/40 z-20" />
-               <div className="absolute top-0 right-0 w-8 h-8 border-r-2 border-t-2 border-[#38BDF8]/40 z-20" />
-               <div className="absolute bottom-0 left-0 w-8 h-8 border-l-2 border-b-2 border-[#38BDF8]/40 z-20" />
-               <div className="absolute bottom-0 right-0 w-8 h-8 border-r-2 border-b-2 border-[#38BDF8]/40 z-20" />
-
-               <AnimatePresence mode="wait">
-                 <motion.div
-                    key={`${selectedCategory}-${activeIndex}`}
-                    initial={{ opacity: 0, scale: 1.1 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.95 }}
-                    transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                    className="w-full h-full"
-                 >
-                   <img 
-                     src={activeProject.image} 
-                     alt={activeProject.title}
-                     className="w-full h-full object-cover opacity-60 grayscale hover:grayscale-0 transition-all duration-700" 
-                     referrerPolicy="no-referrer"
-                   />
-                   
-                   {/* Project Metadata Overlay */}
-                   <div className="absolute bottom-10 left-10 right-10 flex items-end justify-between z-30">
-                      <div className="space-y-1">
-                        <div className="flex items-center gap-2 text-brand font-mono text-[10px] uppercase font-semibold">
-                          <ShieldCheck className="w-3.5 h-3.5" /> Certified Dev
-                        </div>
-                        <h4 className="font-display text-4xl uppercase font-bold tracking-tighter text-white">
-                          {activeProject.title}
-                        </h4>
-                      </div>
-                      
-                      <button 
-                        onClick={() => handleProjectClick(activeIndex)}
-                        className="flex items-center gap-3 bg-brand text-[#0A0E17] font-bold px-6 py-3 rounded-sm font-mono text-xs uppercase tracking-widest hover:bg-brand-light hover:shadow-[0_0_20px_rgba(0,230,165,0.4)] transition-all group"
-                      >
-                         {expandedIndex === activeIndex ? 'Minimize Details' : 'Expand Details'}
-                         <ExternalLink className="w-3 h-3 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                      </button>
-                   </div>
-
-                   {/* Overlay Gradients */}
-                   <div className="absolute inset-0 bg-gradient-to-t from-[#0A0E17] via-transparent to-[#0A0E17]/30" />
-                   <div className="absolute inset-0 bg-gradient-to-r from-[#0A0E17]/60 via-transparent to-transparent" />
-                 </motion.div>
-               </AnimatePresence>
-            </div>
-            
-            {/* Tech Specs Label (Right Side) */}
-            <div className="absolute -right-4 top-1/2 -translate-y-1/2 vertical-rl flex items-center gap-4 text-[#94A3B8]/60">
-               <div className="w-[1px] h-12 bg-[#38BDF8]/20" />
-               <span className="uppercase text-[9px] tracking-[0.4em] font-mono whitespace-nowrap">Technical Specs Attached / {activeProject.year}</span>
-            </div>
-          </div>
+            );
+          })}
         </div>
       </div>
     </section>

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -6,52 +6,54 @@
   --font-display: "Space Grotesk", sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
   
-  --color-bg-midnight: #0A0E17;
-  --color-surface-navy: #131B2E;
-  --color-surface-card: #131B2E;
-  --color-surface-hover: #1E293B;
+  /* Primary Royal / Cobalt Blue from Reference Image */
+  --color-brand: #2563EB;
+  --color-brand-light: #3B82F6;
+  --color-brand-dark: #1D4ED8;
+  --color-brand-vibrant: #1E40AF;
 
-  --color-brand: #00E6A5; /* Mint / Emerald Green */
-  --color-brand-light: #34EEB9;
-  --color-brand-dark: #10B981;
-  --color-brand-emerald: #10B981;
+  /* Base Canvas & Surface Tones (Clean Pristine Light & Off-White) */
+  --color-canvas-pure: #FFFFFF;
+  --color-canvas-subtle: #F8FAFC;
+  --color-canvas-muted: #F1F5F9;
 
-  --color-ice: #38BDF8; /* Cool Ice Blue */
-  --color-ice-light: #7DD3FC;
-  --color-ice-dark: #0284C7;
+  /* Cards & Elevational Containers */
+  --color-card-light: #FFFFFF;
+  --color-card-dark: #0F172A; /* For contrast dark cards (like 99% card in reference) */
 
-  --color-slate-text: #94A3B8; /* Slate Blue text */
+  /* Text & Border Hierarchy */
+  --color-ink-primary: #0F172A;
+  --color-ink-secondary: #475569;
+  --color-ink-muted: #64748B;
+  --color-border-subtle: #E2E8F0;
+  --color-border-medium: #CBD5E1;
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
-    background-color: #0A0E17;
-    color: #FFFFFF;
+    background-color: #FFFFFF;
+    color: #0F172A;
   }
   
   body {
-    @apply bg-[#0A0E17] text-white antialiased font-sans overflow-x-hidden;
-    background-color: #0A0E17;
+    @apply bg-white text-slate-900 antialiased font-sans overflow-x-hidden;
+    background-color: #FFFFFF;
   }
 
   ::selection {
-    background-color: #00E6A5;
-    color: #0A0E17;
+    background-color: #2563EB;
+    color: #FFFFFF;
   }
 }
 
 @layer utilities {
-  .text-shadow-mint {
-    text-shadow: 0 0 20px rgba(0, 230, 165, 0.4);
-  }
-
-  .text-shadow-ice {
-    text-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+  .text-shadow-blue {
+    text-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
   }
   
-  .glass-card {
-    @apply bg-[#131B2E]/90 backdrop-blur-md border border-[#38BDF8]/15;
+  .glass-card-light {
+    @apply bg-white/90 backdrop-blur-md border border-slate-200/80 shadow-[0_10px_30px_rgba(15,23,42,0.06)];
   }
 
   .vertical-rl {
